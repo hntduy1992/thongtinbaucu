@@ -1,10 +1,28 @@
-<script setup lang="ts">
+<script setup>
+import {Link} from '@inertiajs/vue3';
+
+window.onscroll = function () {
+    scrollFunction()
+};
+
+function scrollFunction() {
+    const scroll = document.body.scrollTop
+    var navbar = document.getElementById("navbar");
+    var headerTop = document.getElementById("headerTop");
+    if (scroll >= headerTop.clientHeight) {
+        navbar.style.position = "fixed";
+        navbar.style.top = "0";
+        navbar.style.width = "100%";
+    } else {
+        navbar.style.position = "relative";
+    }
+}
 
 </script>
 
 <template>
     <header class="main-header">
-        <div class="header-top">
+        <div id="headerTop" class="header-top">
             <v-container class="content">
                 <img src="../../../images/logo-quoc-huy.png" class="img-fluid" alt="">
                 <div class="content-title">
@@ -14,14 +32,15 @@
                 </div>
             </v-container>
         </div>
-        <div class="navbar">
+        <div id="navbar" class="navbar">
             <v-container class="pa-0">
-               <ul class="menu">
-                   <li>TỔ BẦU CỬ</li>
-                   <li>DANH SÁCH ỨNG CỬ</li>
-                   <li>HỎI ĐÁP</li>
-                   <li>HƯỚNG DẪN BỎ PHIẾU</li>
-               </ul>
+                <ul class="menu">
+                    <li ><Link href="#home">TRANG CHỦ</Link></li>
+                    <li ><Link href="#home">DANH SÁCH ỨNG CỬ</Link></li>
+                    <li ><Link href="#home">ĐIỂM BẦU CỬ</Link></li>
+                    <li ><Link href="#home">HỎI ĐÁP</Link></li>
+                    <li ><Link href="#home">HƯỚNG DẪN BỎ PHIẾU</Link></li>
+                </ul>
             </v-container>
         </div>
     </header>
@@ -38,6 +57,7 @@
     padding-bottom: 15px;
     position: relative;
     transition: 0.3s;
+    height: 150px;
 }
 
 .content {
@@ -82,20 +102,30 @@
     background: #A76700;
     padding: 4px 0;
     color: white;
+    position: relative;
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    align-items: center;
 }
-.menu{
+
+.menu {
     display: flex;
     justify-content: center;
     list-style: none;
     padding: 5px 0;
 }
-.menu li{
+
+.menu a {
+    color: white;
+    text-decoration-line: none;
     transition: all 0.3s;
     padding: 5px;
     margin: 0 5px;
     border: 2px solid transparent;
 }
-.menu li:hover{
+
+.menu li:hover {
     color: yellow;
     cursor: pointer;
     border-bottom: 2px solid white;
