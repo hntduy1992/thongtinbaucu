@@ -4,7 +4,7 @@ import {createInertiaApp} from '@inertiajs/vue3';
 import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
 import {vuetify} from "./plugins/vuetify.js";
 import DefaultLayout from "./Layout/DefaultLayout.vue";
-
+import '../css/app.css'
 createInertiaApp({
     resolve: async (name) => {
         const page = await resolvePageComponent(

@@ -1,6 +1,15 @@
 <script setup>
 import {Link} from '@inertiajs/vue3';
 
+const links = [
+    {text: 'TRANG CHỦ', href: '#home'},
+    {text: 'DANH SÁCH ỨNG CỬ', href: '#nguoi-ung-cu'},
+    {text: 'TỔ BẦU CỬ', href: '#to-bau-cu'},
+    {text: 'HƯỚNG DẪN', href: '#huong-dan'},
+    {text: 'HỎI ĐÁP', href: '#hoi-dap'},
+]
+
+
 window.onscroll = function () {
     scrollFunction()
 };
@@ -10,11 +19,9 @@ function scrollFunction() {
     var navbar = document.getElementById("navbar");
     var headerTop = document.getElementById("headerTop");
     if (scroll >= headerTop.clientHeight) {
-        navbar.style.position = "fixed";
-        navbar.style.top = "0";
-        navbar.style.width = "100%";
+        headerTop.visible = false;
     } else {
-        navbar.style.position = "relative";
+        headerTop.visible = true;
     }
 }
 
@@ -35,11 +42,9 @@ function scrollFunction() {
         <div id="navbar" class="navbar">
             <v-container class="pa-0">
                 <ul class="menu">
-                    <li ><Link href="#home">TRANG CHỦ</Link></li>
-                    <li ><Link href="#home">DANH SÁCH ỨNG CỬ</Link></li>
-                    <li ><Link href="#home">ĐIỂM BẦU CỬ</Link></li>
-                    <li ><Link href="#home">HỎI ĐÁP</Link></li>
-                    <li ><Link href="#home">HƯỚNG DẪN BỎ PHIẾU</Link></li>
+                    <li v-for="item of links">
+                        <Link :href="item.href">{{ item.text }}</Link>
+                    </li>
                 </ul>
             </v-container>
         </div>
