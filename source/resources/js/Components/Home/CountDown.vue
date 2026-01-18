@@ -64,14 +64,14 @@ setInterval(() => {
 
 
 .title-page {
-    font-size: 26pt;
+    font-size: 22pt;
     font-family: 'Times New Roman', sans-serif;
     text-align: center;
     font-weight: bold;
     color: #e60000;
     letter-spacing: 2px;
-    margin-bottom: 100px;
     text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 .title-page span {

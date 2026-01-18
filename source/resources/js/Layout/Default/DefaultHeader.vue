@@ -124,12 +124,14 @@ function scrollFunction() {
 .menu a {
     color: white;
     text-decoration-line: none;
-    transition: all 0.3s;
     padding: 5px;
     margin: 0 5px;
-    border: 2px solid transparent;
-}
 
+}
+.menu li{
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
 .menu li:hover {
     color: yellow;
     cursor: pointer;

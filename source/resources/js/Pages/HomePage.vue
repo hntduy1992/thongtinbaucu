@@ -12,11 +12,11 @@ import CustomElement from "../Components/CustomElement.vue";
     <CustomElement :top-aside="true">
         <CountDown></CountDown>
     </CustomElement>
-    <CustomElement id="to-bau-cu">
-        <ToBauCu></ToBauCu>
-    </CustomElement>
     <CustomElement id="nguoi-ung-cu">
         <NguoiUngCu></NguoiUngCu>
+    </CustomElement>
+    <CustomElement id="to-bau-cu">
+        <ToBauCu></ToBauCu>
     </CustomElement>
     <CustomElement id="huong-dan">
         <HuongDan></HuongDan>
