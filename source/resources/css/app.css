@@ -5,3 +5,14 @@
 html {
     scroll-behavior: smooth;
 }
+
+.img-wrap{
+    border-radius: 50%;
+    border: 10px solid white;
+    overflow: hidden;
+    background-color: #00acc1;
+}
+
+.img-wrap img{
+    width: 100%;
+}
