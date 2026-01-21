@@ -54,4 +54,16 @@ import UngCuView from "./UngCuView.vue";
   background-color: transparent;
     margin-top: 50px;
 }
+
+
+.img-wrap{
+    border-radius: 50%;
+    border: 3px solid white;
+    overflow: hidden;
+    background-color: #00acc1;
+}
+
+.img-wrap img{
+    width: 100%;
+}
 </style>

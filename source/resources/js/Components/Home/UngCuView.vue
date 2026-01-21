@@ -5,7 +5,7 @@
 <template>
     <v-card class="wrap">
         <v-card-title>
-            <h1 class=" text-center text-red">HỌ VÀ TÊN</h1>
+            <h1 class=" text-center text-red mt-3">HỌ VÀ TÊN</h1>
         </v-card-title>
         <v-card-text class="content">
             <div class="left-content">
@@ -27,7 +27,6 @@
 .wrap {
     background-image: url("../../../images/TrongDong-bgcontent.png");
     background-size: cover;
-
     background-position: left center;
     background-repeat: no-repeat;
 
@@ -43,10 +42,10 @@
 .content:after{
     position: absolute;
     content: '';
-    width: 3px;
-    height: 80%;
+    width: 4px;
+    height: 100%;
     border-radius: 3px;
-    background-color: red;
+    background-color: var(--root-color);
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -69,5 +68,16 @@
 .content .left-content .img-wrap{
     width: 350px;
     height: 350px;
+}
+
+.img-wrap{
+    border-radius: 50%;
+    border: 3px solid var(--root-color);
+    overflow: hidden;
+    background-color: #00acc1;
+}
+
+.img-wrap img{
+    width: 100%;
 }
 </style>
