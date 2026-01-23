@@ -97,14 +97,14 @@ function scrollFunction() {
     right: 0;
     bottom: 0;
     content: '';
-    background-image: url('../../../images/bg-flag.png');
+    background-image: url('../../../images/bg-header-right.png');
     background-position: center right;
     background-repeat: no-repeat;
     background-size: auto 100%;
 }
 
 .main-header .navbar {
-    background: #A76700;
+    background: rgb(217, 9, 1);
     padding: 4px 0;
     color: white;
     position: relative;

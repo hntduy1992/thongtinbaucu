@@ -32,9 +32,9 @@ onUnmounted(() => {
 
 <style scoped>
 .main-content {
-    background-image: url("../../images/TrongDong-bgcontent.png");
-    background-size: contain;
-    background-position: top;
+    //background-image: url("../../images/TrongDong-bgcontent.png");
+    //background-size: contain;
+    //background-position: top;
 }
 
 .go-home {

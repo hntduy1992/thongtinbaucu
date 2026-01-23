@@ -24,44 +24,94 @@ setInterval(() => {
 </script>
 
 <template>
-    <div class="content-wrap">
-        <div class="title-page"><span>CHÀO MỪNG</span> <br>
-            <h3 class="text-content">ĐẠI HỘI ĐẠI BIỂU TOÀN QUỐC LẦN THỨ XIV CỦA ĐẢNG</h3></div>
-        <h3 class="text-center mb-4">NGÀY BẦU CỬ</h3>
-        <div class="countdown-container">
-
-            <div class="time-section">
-                <span id="days">{{ countdown.days }}</span>
-                <p>Ngày</p>
+    <v-container class="content-wrap">
+        <div class="content-wrap__background">
+            <div class="img"><img src="../../../images/trong-dong/trongdong-1.png" alt="trong-dong"></div>
+            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-2.png" alt="trong-dong"></div>
+            <div class="img"><img class="rotate-left" src="../../../images/trong-dong/trongdong-3.png" alt="trong-dong"></div>
+            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-4.png" alt="trong-dong"></div>
+            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-5.png" alt="trong-dong"></div>
+            <div class="img"><img class="rotate-left" src="../../../images/trong-dong/trongdong-6.png" alt="trong-dong">
             </div>
-            <div class="time-section">
-                <span id="hours">{{ countdown.hours }}</span>
-                <p>Giờ</p>
-            </div>
-            <div class="time-section">
-                <span id="minutes">{{ countdown.minutes }}</span>
-                <p>Phút</p>
-            </div>
-            <div class="time-section">
-                <span id="seconds">{{ countdown.seconds }}</span>
-                <p>Giây</p>
-            </div>
+            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-7.png" alt="trong-dong"></div>
+            <div class="img"><img   src="../../../images/trong-dong/trongdong-8.png" alt="trong-dong"></div>
         </div>
+        <v-row>
+            <v-col md="3" class="d-flex align-center">
+                <img class="w-100 content__page--img-left" src="../../../images/tranh-bau-cu-phat-hanh/41.jpg" alt="count-down-left">
+            </v-col>
+            <v-col md="6" class="d-flex align-center justify-center">
+                <div class="page-content">
+                    <div class="count-down__header">NGÀY BẦU CỬ</div>
+                    <div class="countdown-container">
 
-        <div class="title-bottom">
-            <img class="img-left" src="../../../images/chim-lac.png" alt="chim-lac">
-            <span>ĐOÀN KẾT - DÂN CHỦ - KỶ CƯƠNG - ĐỘT PHÁ - PHÁT TRIỂN</span>
-            <img class="img-right" src="../../../images/chim-lac.png" alt="chim-lac">
-        </div>
-    </div>
+                        <div class="time-section">
+                            <span id="days">{{ countdown.days }}</span>
+                            <p>Ngày</p>
+                        </div>
+                        <div class="time-section">
+                            <span id="hours">{{ countdown.hours }}</span>
+                            <p>Giờ</p>
+                        </div>
+                        <div class="time-section">
+                            <span id="minutes">{{ countdown.minutes }}</span>
+                            <p>Phút</p>
+                        </div>
+                        <div class="time-section">
+                            <span id="seconds">{{ countdown.seconds }}</span>
+                            <p>Giây</p>
+                        </div>
+                    </div>
+                </div>
+            </v-col>
+            <v-col md="3" class="d-flex align-center">
+                <img class="w-100 content__page--img-left" src="../../../images/tranh-bau-cu-phat-hanh/33.jpg" alt="count-down-left">
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <style scoped>
 .content-wrap {
     background-position: top;
     background-size: auto;
+    position: relative;
 }
 
+.content-wrap__background .img,
+.content-wrap__background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%) scale(0.7);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.rotate-left {
+    animation: rotate-go-left 60s linear infinite;
+}
+.rotate-right {
+    animation: rotate-go-right 60s linear infinite;
+}
+/* Định nghĩa chuyển động quay */
+@keyframes rotate-go-left {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-go-right {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
 
 .title-page {
     font-size: 22pt;
@@ -95,7 +145,13 @@ setInterval(() => {
 
     -webkit-box-reflect: below -15px linear-gradient(transparent 20%, rgba(0, 0, 0, 0.15));
 }
-
+.page-content .count-down__header{
+    color: rgb(107, 46, 3)!important;
+    font-size: calc(20pt + 0.2vw);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
 .title-bottom {
     font-size: 16pt;
     margin-top: 60px;

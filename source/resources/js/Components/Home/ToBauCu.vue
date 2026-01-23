@@ -21,7 +21,7 @@
                     <v-card elevation="4">
                         <v-card-title class="bg-card-title text-center  text-red font-weight-bold border-b">
                             <v-icon class="float-left">mdi-map-marker-radius</v-icon>
-                            <h3 class="text-cart-title"> Tổ bầu cử số {{ i }}</h3>
+                            <h3 class="text-cart-title"> Đơn vị bầu cử số {{ i }}</h3>
                         </v-card-title>
                         <v-card-text class="py-2  d-flex flex-column bg-quoc-huy">
                             <h3 class="font-weight-bold text-decoration-underline text-center">Gồm các khóm</h3>
