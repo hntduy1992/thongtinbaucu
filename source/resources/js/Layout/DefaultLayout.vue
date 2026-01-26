@@ -1,6 +1,7 @@
 <script setup>
 import DefaultHeader from "./Default/DefaultHeader.vue";
 import {onMounted, onUnmounted, ref} from "vue";
+import DefaultFooter from "./Default/DefaultFooter.vue";
 const isHidden = ref(false);
 
 const handleScroll = () => {
@@ -24,6 +25,7 @@ onUnmounted(() => {
         <div class="flex-grow-1 main-content">
             <slot></slot>
         </div>
+        <DefaultFooter></DefaultFooter>
     </div>
     <div class="go-home" :class="{'go-home__hide': isHidden}">
         <v-btn icon="mdi-home" color="primary" href="#home"></v-btn>

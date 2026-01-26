@@ -3,10 +3,7 @@ import {Link} from '@inertiajs/vue3';
 
 const links = [
     {text: 'TRANG CHỦ', href: '#home'},
-    {text: 'DANH SÁCH ỨNG CỬ', href: '#nguoi-ung-cu'},
     {text: 'TỔ BẦU CỬ', href: '#to-bau-cu'},
-    {text: 'HƯỚNG DẪN', href: '#huong-dan'},
-    {text: 'HỎI ĐÁP', href: '#hoi-dap'},
 ]
 
 
@@ -28,9 +25,9 @@ function scrollFunction() {
 </script>
 
 <template>
-    <header class="main-header">
-        <div id="headerTop" class="header-top">
-            <v-container class="content">
+    <header class="main-header ">
+        <div id="headerTop" class="header-top d-none d-sm-block">
+            <v-container class="content d-flex">
                 <img src="../../../images/logo-quoc-huy.png" class="img-fluid" alt="">
                 <div class="content-title">
                     <h3> ỦY BAN BẦU CỬ PHƯỜNG SA ĐÉC</h3>
@@ -40,7 +37,15 @@ function scrollFunction() {
             </v-container>
         </div>
         <div id="navbar" class="navbar">
-            <v-container class="pa-0">
+<!--            <v-app-bar-nav-icon></v-app-bar-nav-icon>-->
+<!--            <v-navigation-drawer permanent>-->
+<!--                <ul class="menu">-->
+<!--                    <li v-for="item of links">-->
+<!--                        <Link :href="item.href">{{ item.text }}</Link>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </v-navigation-drawer>-->
+            <v-container class="pa-0 d-none d-md-block">
                 <ul class="menu">
                     <li v-for="item of links">
                         <Link :href="item.href">{{ item.text }}</Link>
@@ -53,7 +58,6 @@ function scrollFunction() {
 
 <style scoped>
 .header-top {
-    background: linear-gradient(97deg, #FFE68D 4.88%, #FFFEFC 29.3%, #FFFAE8 57.67%, #FFDC9B 84.26%);
     background-image: url('../../../images/trong-dong-header.png'), linear-gradient(97deg, #FFE68D 4.88%, #FFFEFC 29.3%, #FFFAE8 57.67%, #FFDC9B 84.26%);
     background-position: left center;
     background-repeat: no-repeat;
@@ -66,7 +70,6 @@ function scrollFunction() {
 }
 
 .content {
-    display: flex;
 }
 
 .content img {
@@ -104,7 +107,7 @@ function scrollFunction() {
 }
 
 .main-header .navbar {
-    background: rgb(217, 9, 1);
+    background:  rgb(217, 9, 1);
     padding: 4px 0;
     color: white;
     position: relative;
@@ -137,5 +140,6 @@ function scrollFunction() {
     cursor: pointer;
     border-bottom: 2px solid white;
 }
+
 
 </style>

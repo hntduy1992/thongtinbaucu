@@ -27,18 +27,24 @@ setInterval(() => {
     <v-container class="content-wrap">
         <div class="content-wrap__background">
             <div class="img"><img src="../../../images/trong-dong/trongdong-1.png" alt="trong-dong"></div>
-            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-2.png" alt="trong-dong"></div>
-            <div class="img"><img class="rotate-left" src="../../../images/trong-dong/trongdong-3.png" alt="trong-dong"></div>
-            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-4.png" alt="trong-dong"></div>
-            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-5.png" alt="trong-dong"></div>
+            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-2.png"
+                                  alt="trong-dong"></div>
+            <div class="img"><img class="rotate-left" src="../../../images/trong-dong/trongdong-3.png" alt="trong-dong">
+            </div>
+            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-4.png"
+                                  alt="trong-dong"></div>
+            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-5.png"
+                                  alt="trong-dong"></div>
             <div class="img"><img class="rotate-left" src="../../../images/trong-dong/trongdong-6.png" alt="trong-dong">
             </div>
-            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-7.png" alt="trong-dong"></div>
-            <div class="img"><img   src="../../../images/trong-dong/trongdong-8.png" alt="trong-dong"></div>
+            <div class="img"><img class="rotate-right" src="../../../images/trong-dong/trongdong-7.png"
+                                  alt="trong-dong"></div>
+            <div class="img"><img src="../../../images/trong-dong/trongdong-8.png" alt="trong-dong"></div>
         </div>
         <v-row>
-            <v-col md="3" class="d-flex align-center">
-                <img class="w-100 content__page--img-left" src="../../../images/tranh-bau-cu-phat-hanh/41.jpg" alt="count-down-left">
+            <v-col md="3" class="d-none d-md-flex align-center">
+                <img class="w-100 content__page--img-left" src="../../../images/tranh-bau-cu-phat-hanh/zip/41.jpg"
+                     alt="count-down-left">
             </v-col>
             <v-col md="6" class="d-flex align-center justify-center">
                 <div class="page-content">
@@ -64,8 +70,10 @@ setInterval(() => {
                     </div>
                 </div>
             </v-col>
-            <v-col md="3" class="d-flex align-center">
-                <img class="w-100 content__page--img-left" src="../../../images/tranh-bau-cu-phat-hanh/33.jpg" alt="count-down-left">
+            <v-col md="3" class="d-none d-md-flex align-center">
+
+                <img class="w-100 content__page--img-left" src="../../../images/tranh-bau-cu-phat-hanh/zip/33.jpg"
+                     alt="count-down-left">
             </v-col>
         </v-row>
     </v-container>
@@ -91,9 +99,11 @@ setInterval(() => {
 .rotate-left {
     animation: rotate-go-left 60s linear infinite;
 }
+
 .rotate-right {
     animation: rotate-go-right 60s linear infinite;
 }
+
 /* Định nghĩa chuyển động quay */
 @keyframes rotate-go-left {
     from {
@@ -145,13 +155,16 @@ setInterval(() => {
 
     -webkit-box-reflect: below -15px linear-gradient(transparent 20%, rgba(0, 0, 0, 0.15));
 }
-.page-content .count-down__header{
-    color: rgb(107, 46, 3)!important;
+
+.page-content .count-down__header {
+
+    color: rgb(107, 46, 3) !important;
     font-size: calc(20pt + 0.2vw);
     text-align: center;
     font-weight: bold;
     margin-bottom: 12px;
 }
+
 .title-bottom {
     font-size: 16pt;
     margin-top: 60px;
