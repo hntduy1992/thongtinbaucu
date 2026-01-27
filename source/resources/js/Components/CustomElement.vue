@@ -22,4 +22,12 @@ aside {
     height: calc(100vh - 200px);
     padding-top: 0;
 }
+@media (min-width: 768px){
+    aside{
+        height: unset;
+    }
+    .top-aside{
+        min-height: calc(100vh - 118px);
+    }
+}
 </style>

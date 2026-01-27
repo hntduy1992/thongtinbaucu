@@ -84,6 +84,7 @@ setInterval(() => {
     background-position: top;
     background-size: auto;
     position: relative;
+    overflow: hidden;
 }
 
 .content-wrap__background .img,

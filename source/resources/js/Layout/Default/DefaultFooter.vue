@@ -13,12 +13,16 @@
 
 <style scoped>
 .bg-footer {
-    background-image: url("../../../images/logo-quoc-huy.png"), linear-gradient(180deg,#FFDC9B 1%,  red 84.26%);
+    background-image: linear-gradient(180deg,#FFDC9B 1%,  red 84.26%);
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto 100%;
 }
 .content-text{
+    background-image: url("../../../images/logo-quoc-huy.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
     font-size: calc(8pt + 0.1vw);
     text-align: center;
     color: white;

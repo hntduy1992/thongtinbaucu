@@ -2,6 +2,7 @@
 import DefaultHeader from "./Default/DefaultHeader.vue";
 import {onMounted, onUnmounted, ref} from "vue";
 import DefaultFooter from "./Default/DefaultFooter.vue";
+
 const isHidden = ref(false);
 
 const handleScroll = () => {
@@ -21,22 +22,24 @@ onUnmounted(() => {
 
 <template>
     <div class="d-flex flex-column">
-        <DefaultHeader id="home" cl></DefaultHeader>
+        <DefaultHeader id="home"></DefaultHeader>
         <div class="flex-grow-1 main-content">
-            <slot></slot>
+            <v-container class="pa-0">
+                <slot></slot>
+            </v-container>
         </div>
         <DefaultFooter></DefaultFooter>
     </div>
+
     <div class="go-home" :class="{'go-home__hide': isHidden}">
         <v-btn icon="mdi-home" color="primary" href="#home"></v-btn>
     </div>
+
 </template>
 
 <style scoped>
 .main-content {
-    //background-image: url("../../images/TrongDong-bgcontent.png");
-    //background-size: contain;
-    //background-position: top;
+//background-image: url("../../images/TrongDong-bgcontent.png"); //background-size: contain; //background-position: top;
 }
 
 .go-home {
@@ -44,8 +47,10 @@ onUnmounted(() => {
     position: fixed;
     bottom: 50px;
     right: 50px;
+    z-index: 10;
 }
-.go-home.go-home__hide{
+
+.go-home.go-home__hide {
     display: block;
 }
 </style>

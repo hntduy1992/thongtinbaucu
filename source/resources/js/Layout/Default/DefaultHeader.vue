@@ -27,25 +27,17 @@ function scrollFunction() {
 <template>
     <header class="main-header ">
         <div id="headerTop" class="header-top d-none d-sm-block">
-            <v-container class="content d-flex">
+            <div class="content-header d-flex justify-center">
                 <img src="../../../images/logo-quoc-huy.png" class="img-fluid" alt="">
                 <div class="content-title">
                     <h3> ỦY BAN BẦU CỬ PHƯỜNG SA ĐÉC</h3>
                     <h2>BẦU CỬ ĐẠI BIỂU QUỐC HỘI KHÓA XVI &</h2>
                     <h2>ĐẠI BIỂU HỘI ĐỒNG NHÂN DÂN CÁC CẤP NHIỆM KỲ 2026 - 2031</h2>
                 </div>
-            </v-container>
+            </div>
         </div>
-        <div id="navbar" class="navbar">
-<!--            <v-app-bar-nav-icon></v-app-bar-nav-icon>-->
-<!--            <v-navigation-drawer permanent>-->
-<!--                <ul class="menu">-->
-<!--                    <li v-for="item of links">-->
-<!--                        <Link :href="item.href">{{ item.text }}</Link>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </v-navigation-drawer>-->
-            <v-container class="pa-0 d-none d-md-block">
+        <div id="navbar" class="navbar d-none  d-sm-block">
+            <v-container class="pa-0 ">
                 <ul class="menu">
                     <li v-for="item of links">
                         <Link :href="item.href">{{ item.text }}</Link>
@@ -53,6 +45,10 @@ function scrollFunction() {
                 </ul>
             </v-container>
         </div>
+        <v-toolbar color="red d-block d-sm-none " >
+            <v-btn icon="mdi-menu"></v-btn>
+            <v-toolbar-title>ỦY BAN BẦU CỬ PHƯỜNG SA ĐÉC</v-toolbar-title>
+        </v-toolbar>
     </header>
 </template>
 
@@ -69,26 +65,33 @@ function scrollFunction() {
     height: 150px;
 }
 
-.content {
+.content-header {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.content img {
+.content-header img {
     width: 100px;
+    margin-right: 20px;
 }
 
 .content-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 20px;
     line-height: 1.2;
+    z-index: 1;
+    text-shadow: 2px 2px 2px white;
 }
 
-.content h3 {
+.content-header h3 {
     color: #2f2f2d;
 }
 
-.content h2 {
+.content-header h2 {
     font-weight: bold;
     color: rgb(107, 46, 3);
 }
@@ -107,12 +110,9 @@ function scrollFunction() {
 }
 
 .main-header .navbar {
-    background:  rgb(217, 9, 1);
-    padding: 4px 0;
+    background: rgb(217, 9, 1);
     color: white;
     position: relative;
-    width: 100vw;
-    height: 50px;
     display: flex;
     align-items: center;
 }
@@ -131,10 +131,12 @@ function scrollFunction() {
     margin: 0 5px;
 
 }
-.menu li{
+
+.menu li {
     border: 2px solid transparent;
     transition: all 0.3s ease-in-out;
 }
+
 .menu li:hover {
     color: yellow;
     cursor: pointer;
@@ -142,4 +144,22 @@ function scrollFunction() {
 }
 
 
+@media (min-width: 768px) {
+    .header-top {
+        height: 5rem;
+        padding: 0;
+    }
+
+    .content-title {
+        font-size: 0.6rem;
+    }
+
+    .content-header img {
+        max-width: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+}
 </style>

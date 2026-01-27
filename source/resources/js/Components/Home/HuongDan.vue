@@ -4,7 +4,7 @@ import boPhieu from '../../../images/bo-phieu.png'
 </script>
 
 <template>
-    <div class="content">
+    <div class="content-huong-dan">
         <v-row>
             <v-col md="4">
                 <v-carousel class="content__left" hide-delimiters  :continuous="false"
@@ -74,7 +74,7 @@ import boPhieu from '../../../images/bo-phieu.png'
 </template>
 
 <style scoped>
-.content{
+.content-huong-dan{
     height: 100%;
     display: flex;
     background: linear-gradient(10deg, #FFFAE8 10.67%, #FFE68D 64.88%, #FFDC9B 84.26%);
