@@ -48,12 +48,12 @@ const dvbc = [
         <div class="header-content">
             <div class="header-content__item bg-teal header-content__item--left">
                 <v-icon class="mr-2">mdi-home-map-marker</v-icon>
-                10 Đơn vị bầu cử
+                <span>10 Đơn vị bầu cử</span>
             </div>
 
             <div class="header-content__item bg-teal header-content__item--right">
                 <v-icon class="mr-2">mdi-account-group-outline</v-icon>
-                50 Đại biểu được bầu
+                <span>50 Đại biểu được bầu</span>
             </div>
         </div>
 
@@ -62,7 +62,7 @@ const dvbc = [
                 <v-list-item v-for="i of dvbc" class="content-tbc__list-item" link :href="i.file">
                     <v-card class="content-tbc__card bg-quoc-huy">
                         <v-card-title class="bg-transparent text-center  text-red font-weight-bold border-b">
-                            <v-icon class="float-left">mdi-map-marker-radius</v-icon>
+                            <v-icon class="float-left icon-card-title">mdi-map-marker-radius</v-icon>
                             <h3 class="text-cart-title"> {{ i.name }}</h3>
                         </v-card-title>
                         <v-card-text class="py-2  d-flex flex-column ">
@@ -119,7 +119,10 @@ const dvbc = [
 
 .card-content__list {
     list-style: none;
-
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .bg-quoc-huy {
@@ -133,9 +136,11 @@ li {
     color: var(--root-color);
 }
 
-.v-card h3 {
-    font-size: calc(0.9rem + 0.4vw);
+.content-tbc__card .v-card-title,
+.content-tbc__card h3 {
+    font-size: calc(0.7rem + 0.1vw);
 }
+
 
 .v-card h6 {
     font-size: calc(0.6rem + 0.4vw);
@@ -167,7 +172,6 @@ li {
     transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
-
 .content-tbc__card:hover {
     border-color: rgb(217, 9, 1);
     transform: scale(1);
@@ -192,8 +196,9 @@ li {
     width: 33.33%;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .header-content {
+        font-size: calc(1rem + 0.2vw);
     }
 
     .header-content__item {
@@ -235,4 +240,24 @@ li {
     }
 }
 
+@media (max-width: 576px){
+    .header-content__item{
+        font-size: 1rem;
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+    }
+    .header-content__item .v-icon{
+        position: absolute;
+        z-index: 0;
+        color: green;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 3rem;
+    }
+    .header-content__item span{
+        z-index: 1;
+    }
+}
 </style>

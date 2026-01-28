@@ -26,29 +26,33 @@ function scrollFunction() {
 
 <template>
     <header class="main-header ">
-        <div id="headerTop" class="header-top d-none d-sm-block">
-            <div class="content-header d-flex justify-center">
-                <img src="../../../images/logo-quoc-huy.png" class="img-fluid" alt="">
-                <div class="content-title">
-                    <h3> ỦY BAN BẦU CỬ PHƯỜNG SA ĐÉC</h3>
-                    <h2>BẦU CỬ ĐẠI BIỂU QUỐC HỘI KHÓA XVI &</h2>
-                    <h2>ĐẠI BIỂU HỘI ĐỒNG NHÂN DÂN CÁC CẤP NHIỆM KỲ 2026 - 2031</h2>
+        <div class="d-none d-sm-block">
+            <div id="headerTop" class="header-top ">
+                <div class="content-header d-flex justify-center">
+                    <img src="../../../images/logo-quoc-huy.png" class="img-fluid" alt="">
+                    <div class="content-title">
+                        <h3> ỦY BAN BẦU CỬ PHƯỜNG SA ĐÉC</h3>
+                        <h2>BẦU CỬ ĐẠI BIỂU QUỐC HỘI KHÓA XVI &</h2>
+                        <h2>ĐẠI BIỂU HỘI ĐỒNG NHÂN DÂN CÁC CẤP NHIỆM KỲ 2026 - 2031</h2>
+                    </div>
                 </div>
             </div>
+            <div id="navbar" class="navbar d-none  d-sm-block">
+                <v-container class="pa-0 ">
+                    <ul class="menu">
+                        <li v-for="item of links">
+                            <Link :href="item.href">{{ item.text }}</Link>
+                        </li>
+                    </ul>
+                </v-container>
+            </div>
         </div>
-        <div id="navbar" class="navbar d-none  d-sm-block">
-            <v-container class="pa-0 ">
-                <ul class="menu">
-                    <li v-for="item of links">
-                        <Link :href="item.href">{{ item.text }}</Link>
-                    </li>
-                </ul>
-            </v-container>
+        <div class=" d-block d-sm-none ">
+            <v-toolbar color="red" id="toolbar">
+                <slot></slot>
+                <v-toolbar-title>ỦY BAN BẦU CỬ PHƯỜNG SA ĐÉC</v-toolbar-title>
+            </v-toolbar>
         </div>
-        <v-toolbar color="red d-block d-sm-none " >
-            <v-btn icon="mdi-menu"></v-btn>
-            <v-toolbar-title>ỦY BAN BẦU CỬ PHƯỜNG SA ĐÉC</v-toolbar-title>
-        </v-toolbar>
     </header>
 </template>
 
@@ -144,7 +148,7 @@ function scrollFunction() {
 }
 
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .header-top {
         height: 5rem;
         padding: 0;
@@ -159,7 +163,5 @@ function scrollFunction() {
     }
 }
 
-@media (max-width: 768px) {
 
-}
 </style>

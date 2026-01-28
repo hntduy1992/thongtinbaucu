@@ -48,6 +48,13 @@ setInterval(() => {
             </v-col>
             <v-col md="6" class="d-flex align-center justify-center">
                 <div class="page-content">
+                    <div class="d-none page-content__title">
+                        <div class="content-title">
+                            <h2>BẦU CỬ ĐẠI BIỂU QUỐC HỘI KHÓA XVI</h2>
+                            <h2>& ĐẠI BIỂU HỘI ĐỒNG NHÂN DÂN CÁC CẤP NHIỆM KỲ 2026 - 2031</h2>
+                        </div>
+                    </div>
+
                     <div class="count-down__header">NGÀY BẦU CỬ</div>
                     <div class="countdown-container">
 
@@ -239,5 +246,39 @@ setInterval(() => {
     color: white;
     font-weight: bold;
     text-shadow: red 2px 2px 5px;
+}
+
+@media (max-width: 576px) {
+    .content-wrap__background .img,
+    .content-wrap__background{
+        z-index: 0;
+    }
+    .content-wrap__background{
+        transform: scale(0.7) ;
+    }
+    .time-section{
+        width: 75px;
+    }
+    .time-section span{
+        font-size: 2rem;
+    }
+    .time-section p{
+        font-size: 0.7rem;
+    }
+    .page-content__title{
+        display: flex!important;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 0.7rem;
+        color: red;
+        text-shadow: 1px 1px 1px #fff, -1px -1px 1px #000 ;
+    }
+    .rotate-left {
+        animation: rotate-go-left 120s linear infinite;
+    }
+
+    .rotate-right {
+        animation: rotate-go-right 120s linear infinite;
+    }
 }
 </style>
