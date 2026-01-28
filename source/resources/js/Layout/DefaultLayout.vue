@@ -52,21 +52,6 @@ const closeDrawer = () => {
         </div>
         <DefaultFooter></DefaultFooter>
     </div>
-    <!--    <v-app>-->
-    <!--        <v-app-bar class="bg-app-bar" id="home">-->
-    <!--            <v-app-bar-nav-icon color="red"></v-app-bar-nav-icon>-->
-    <!--            <v-app-bar-title class="text-h6">ỦY BAN BẦU CỬ PHƯỜNG SA ĐÉC</v-app-bar-title>-->
-    <!--        </v-app-bar>-->
-    <!--        <v-navigation-drawer v-model="drawer" class="bg-nav-drawer">-->
-    <!--            <v-list>-->
-    <!--                <v-list-item v-for="link of links" link :href="link.href">{{ link.text }}</v-list-item>-->
-    <!--            </v-list>-->
-    <!--        </v-navigation-drawer>-->
-    <!--        <v-main>-->
-    <!--            <slot></slot>-->
-    <!--            <DefaultFooter></DefaultFooter>-->
-    <!--        </v-main>-->
-    <!--    </v-app>-->
     <div class="go-home" :class="{'go-home__hide': isHidden}">
         <v-btn icon="mdi-home" color="primary" href="#home"></v-btn>
     </div>
@@ -74,9 +59,6 @@ const closeDrawer = () => {
 </template>
 
 <style scoped>
-.main-content {
-//background-image: url("../../images/TrongDong-bgcontent.png"); //background-size: contain; //background-position: top;
-}
 
 .go-home {
     display: none;
@@ -162,4 +144,12 @@ const closeDrawer = () => {
         background-size:cover;
     }
 }
+
+@media (max-width: 576px){
+    .go-home{
+        bottom: 25px;
+        right: 25px;
+    }
+}
+
 </style>

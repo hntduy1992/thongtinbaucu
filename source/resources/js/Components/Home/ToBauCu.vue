@@ -48,12 +48,12 @@ const dvbc = [
         <div class="header-content">
             <div class="header-content__item bg-teal header-content__item--left">
                 <v-icon class="mr-2">mdi-home-map-marker</v-icon>
-                <span>10 Đơn vị bầu cử</span>
+                <span><b class="text-orange-accent-4">10</b> Đơn vị bầu cử</span>
             </div>
 
             <div class="header-content__item bg-teal header-content__item--right">
                 <v-icon class="mr-2">mdi-account-group-outline</v-icon>
-                <span>50 Đại biểu được bầu</span>
+                <span><b class="text-orange-accent-4">50</b> Đại biểu được bầu</span>
             </div>
         </div>
 
@@ -103,6 +103,7 @@ const dvbc = [
     color: white;
     border-bottom: 3px solid var(--root-color);
     text-shadow: 2px 0 5px #0d47a1;
+    justify-content: center;
 }
 
 .header-content__item--right {
@@ -204,7 +205,6 @@ li {
     .header-content__item {
         flex: 1;
         border-radius: 0;
-
     }
     .content-tbc{
         overflow: unset;
@@ -246,7 +246,6 @@ li {
         position: relative;
         display: flex;
         justify-content: center;
-
     }
     .header-content__item .v-icon{
         position: absolute;
@@ -258,6 +257,26 @@ li {
     }
     .header-content__item span{
         z-index: 1;
+    }
+}
+@media (max-width: 425px){
+    .header-content__item{
+        font-size: 0.7rem;
+        padding: 20px 0  0  0;
+    }
+    .header-content__item .v-icon{
+        font-size: 4rem;
+        top: 5px;
+    }
+    .header-content__item b{
+        display: flex;
+        justify-content: center;
+        font-size: 1.5rem;
+        text-shadow: 0 0 10px white;
+    }
+    .content-tbc__list-item {
+        width: 100%;
+
     }
 }
 </style>

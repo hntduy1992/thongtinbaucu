@@ -281,4 +281,16 @@ setInterval(() => {
         animation: rotate-go-right 120s linear infinite;
     }
 }
+@media (max-width: 375px){
+    .time-section{
+        width: 50px;
+        padding: 10px;
+    }
+    .time-section span{
+        font-size: 1rem;
+    }
+    .time-section p{
+        font-size:0.5rem;
+    }
+}
 </style>

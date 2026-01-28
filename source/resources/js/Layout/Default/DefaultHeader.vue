@@ -163,5 +163,10 @@ function scrollFunction() {
     }
 }
 
+@media (max-width: 375px){
 
+    .v-toolbar-title{
+        font-size: 0.9rem;
+    }
+}
 </style>
