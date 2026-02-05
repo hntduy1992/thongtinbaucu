@@ -21,6 +21,7 @@ aside {
 .top-aside {
     height: calc(100vh - 200px);
     padding-top: 0;
+    overflow: hidden;
 }
 @media (max-width: 768px){
     aside{

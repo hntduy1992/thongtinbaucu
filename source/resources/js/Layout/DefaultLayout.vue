@@ -21,11 +21,11 @@ onUnmounted(() => {
 });
 const drawer = ref(true)
 const links = [
-    {text: 'TRANG CHỦ', href: '#home'},
-    {text: 'ĐƠN VỊ BẦU CỬ', href: '#to-bau-cu'},
-    {text: 'TRA CỨU ĐIỂM BỎ PHIẾU', href: '#to-bau-cu'},
-    {text: 'HỎI ĐÁP', href: '#hoi-dap'},
-    {text: 'MEDIA', href: '#to-bau-cu'},
+    {text: 'TRANG CHỦ', href: '/#home'},
+    {text: 'ĐƠN VỊ BẦU CỬ', href: '/#to-bau-cu'},
+    {text: 'TRA CỨU ĐIỂM BỎ PHIẾU', href: '/tra-cuu-diem-bo-phieu'},
+    {text: 'HỎI ĐÁP', href: '/#hoi-dap'},
+    {text: 'MULTIMEDIA', href: '/#media'},
 ]
 
 const closeDrawer = () => {
@@ -49,9 +49,7 @@ const closeDrawer = () => {
         </v-list>
         <label id="drawer-overlay" for="drawer-toggle"></label>
         <div class="flex-grow-1 main-content">
-            <v-container class="pa-0">
-                <slot></slot>
-            </v-container>
+            <slot></slot>
         </div>
         <DefaultFooter></DefaultFooter>
     </div>
@@ -142,14 +140,15 @@ const closeDrawer = () => {
         background: rgba(0, 0, 0, 0.5);
         z-index: 99;
     }
-    .bg-drawer{
+
+    .bg-drawer {
         background-image: url("../../images/TrongDong-bgcontent.png");
-        background-size:cover;
+        background-size: cover;
     }
 }
 
-@media (max-width: 576px){
-    .go-home{
+@media (max-width: 576px) {
+    .go-home {
         bottom: 25px;
         right: 25px;
     }
