@@ -15,8 +15,12 @@ import CustomElement from "../Components/CustomElement.vue";
     <CustomElement id="to-bau-cu">
         <ToBauCu></ToBauCu>
     </CustomElement>
+    <CustomElement id="hoi-dap" class="bg-hoi-dap ">
+        <HoiDap></HoiDap>
+    </CustomElement>
 </template>
 
 <style scoped>
-
+.bg-hoi-dap{
+}
 </style>

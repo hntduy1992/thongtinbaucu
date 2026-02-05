@@ -22,7 +22,10 @@ onUnmounted(() => {
 const drawer = ref(true)
 const links = [
     {text: 'TRANG CHỦ', href: '#home'},
-    {text: 'TỔ BẦU CỬ', href: '#to-bau-cu'},
+    {text: 'ĐƠN VỊ BẦU CỬ', href: '#to-bau-cu'},
+    {text: 'TRA CỨU ĐIỂM BỎ PHIẾU', href: '#to-bau-cu'},
+    {text: 'HỎI ĐÁP', href: '#hoi-dap'},
+    {text: 'MEDIA', href: '#to-bau-cu'},
 ]
 
 const closeDrawer = () => {
@@ -34,7 +37,7 @@ const closeDrawer = () => {
 <template>
     <div class="d-flex flex-column ">
         <input id="drawer-toggle" type="checkbox">
-        <DefaultHeader id="home">
+        <DefaultHeader id="home" :links="links">
             <label for="drawer-toggle" class="ml-3">
                 <v-icon>mdi-menu</v-icon>
             </label>

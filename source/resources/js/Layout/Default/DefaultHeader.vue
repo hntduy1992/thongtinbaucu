@@ -1,10 +1,9 @@
 <script setup>
 import {Link} from '@inertiajs/vue3';
 
-const links = [
-    {text: 'TRANG CHỦ', href: '#home'},
-    {text: 'TỔ BẦU CỬ', href: '#to-bau-cu'},
-]
+const props = defineProps({
+    links:Object
+})
 
 
 window.onscroll = function () {

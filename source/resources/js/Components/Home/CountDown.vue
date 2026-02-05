@@ -1,6 +1,13 @@
 <script setup>
 import dayjs from "dayjs";
 import {onMounted, ref} from "vue";
+import imgBannerSaDec from '../../../images/banner-ban-chi-dao-sa-dec.jpg'
+import img1 from '../../../images/tranh-bau-cu-phat-hanh/zip/14.jpg'
+import img2 from '../../../images/tranh-bau-cu-phat-hanh/zip/19.jpg'
+import img3 from '../../../images/tranh-bau-cu-phat-hanh/zip/15.jpg'
+import img4 from '../../../images/tranh-bau-cu-phat-hanh/zip/25.jpg'
+import img5 from '../../../images/tranh-bau-cu-phat-hanh/zip/31.jpg'
+import img6 from '../../../images/tranh-bau-cu-phat-hanh/zip/34.jpg'
 
 const targetDate = dayjs('2026-03-15 00:00:00')
 
@@ -21,6 +28,14 @@ const setCoutdown = () => {
 setInterval(() => {
     setCoutdown()
 }, 1000)
+
+const carousel = ref(0)
+setInterval(() => {
+    if (carousel.value>=5)
+        carousel.value = 0
+    else
+        carousel.value++
+}, 10000)
 </script>
 
 <template>
@@ -42,9 +57,28 @@ setInterval(() => {
             <div class="img"><img src="../../../images/trong-dong/trongdong-8.png" alt="trong-dong"></div>
         </div>
         <v-row>
-            <v-col md="3" class="d-none d-md-flex align-center">
-                <img class="w-100 content__page--img-left" src="../../../images/tranh-bau-cu-phat-hanh/zip/41.jpg"
-                     alt="count-down-left">
+            <v-col md="3" class="d-none d-md-flex flex-column justify-center align-center">
+                <ul class="list-banner">
+                    <li class="banner-item">
+                        <a href="https://dongthap.gov.vn//documents/1527809/5217035/06-QDTU_dadongdau%20(1)_20260110113555.pdf/33340006-b145-586b-b08b-54831ddee80f">
+                            <v-img
+                                src="https://dongthap.gov.vn/documents/1527809/6876490/banchidaobaucu.jpg/9cc6dad9-3a6b-acbc-5622-d46c8c053fc1?version=1.0&t=1767687284381"></v-img>
+                        </a>
+                    </li>
+                    <li class="banner-item">
+                        <a href="/files/uybanbaucu.pdf">
+                            <v-img :src="imgBannerSaDec"></v-img>
+                        </a>
+                    </li>
+                </ul>
+                <v-carousel v-model="carousel" style="height: unset" hide-delimiters :show-arrows="false">
+                    <v-carousel-item :src="img1"></v-carousel-item>
+                    <v-carousel-item :src="img2"></v-carousel-item>
+                    <v-carousel-item :src="img3"></v-carousel-item>
+                    <v-carousel-item :src="img4"></v-carousel-item>
+                    <v-carousel-item :src="img5"></v-carousel-item>
+                    <v-carousel-item :src="img6"></v-carousel-item>
+                </v-carousel>
             </v-col>
             <v-col md="6" class="d-flex align-center justify-center">
                 <div class="page-content">
@@ -78,7 +112,6 @@ setInterval(() => {
                 </div>
             </v-col>
             <v-col md="3" class="d-none d-md-flex align-center">
-
                 <img class="w-100 content__page--img-left" src="../../../images/tranh-bau-cu-phat-hanh/zip/33.jpg"
                      alt="count-down-left">
             </v-col>
@@ -87,6 +120,19 @@ setInterval(() => {
 </template>
 
 <style scoped>
+.list-banner{
+    width: 100%;
+    list-style-type: none;
+}
+.banner-item{
+    margin-bottom: 12px;
+    transform: scale(0.98);
+    transition: all 0.3s;
+}
+.banner-item:hover{
+    transform: scale(1);
+    box-shadow: 2px 2px 5px #ccc;
+}
 .content-wrap {
     background-position: top;
     background-size: auto;
@@ -250,29 +296,35 @@ setInterval(() => {
 
 @media (max-width: 576px) {
     .content-wrap__background .img,
-    .content-wrap__background{
+    .content-wrap__background {
         z-index: 0;
     }
-    .content-wrap__background{
-        transform: scale(0.7) ;
+
+    .content-wrap__background {
+        transform: scale(0.7);
     }
-    .time-section{
+
+    .time-section {
         width: 75px;
     }
-    .time-section span{
+
+    .time-section span {
         font-size: 2rem;
     }
-    .time-section p{
+
+    .time-section p {
         font-size: 0.7rem;
     }
-    .page-content__title{
-        display: flex!important;
+
+    .page-content__title {
+        display: flex !important;
         text-align: center;
         margin-bottom: 20px;
         font-size: 0.7rem;
         color: red;
-        text-shadow: 1px 1px 1px #fff, -1px -1px 1px #000 ;
+        text-shadow: 1px 1px 1px #fff, -1px -1px 1px #000;
     }
+
     .rotate-left {
         animation: rotate-go-left 120s linear infinite;
     }
@@ -281,16 +333,19 @@ setInterval(() => {
         animation: rotate-go-right 120s linear infinite;
     }
 }
-@media (max-width: 375px){
-    .time-section{
+
+@media (max-width: 375px) {
+    .time-section {
         width: 50px;
         padding: 10px;
     }
-    .time-section span{
+
+    .time-section span {
         font-size: 1rem;
     }
-    .time-section p{
-        font-size:0.5rem;
+
+    .time-section p {
+        font-size: 0.5rem;
     }
 }
 </style>
