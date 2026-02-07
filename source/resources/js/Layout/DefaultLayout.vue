@@ -1,8 +1,9 @@
 <script setup>
 import DefaultHeader from "./Default/DefaultHeader.vue";
-import {onMounted, onUnmounted, ref} from "vue";
+import {computed, onMounted, onUnmounted, ref} from "vue";
 import DefaultFooter from "./Default/DefaultFooter.vue";
-import {Link, router} from "@inertiajs/vue3";
+import {Link, router, usePage} from "@inertiajs/vue3";
+
 
 const isHidden = ref(false);
 
@@ -46,6 +47,8 @@ const closeDrawer = () => {
             <v-list-item link v-for="link of links" :href="link.href"
                          @click="closeDrawer" class="text-red">{{ link.text }}
             </v-list-item>
+
+            <v-list-item>Manager</v-list-item>
         </v-list>
         <label id="drawer-overlay" for="drawer-toggle"></label>
         <div class="flex-grow-1 main-content">

@@ -10,22 +10,18 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('donvi', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('ten')->unique();
+            $table->string('name');
+            $table->string('image')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
         });
-        Schema::create('khom', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('ten')->unique();
-        });
-        Schema::create('khuvuc', function (Blueprint $table) {
-            $table->id();
-            $table->string('ten')->unique();
-            $table->integer('khom_id');
-            $table->integer('donvi_id');
-            $table->string('diaban');
-            $table->string('diem');
-            $table->string('toado');
+            $table->integer('sort');
+            $table->text('question');
+            $table->text('answer');
         });
     }
 
@@ -34,8 +30,7 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('khuvuc');
-        Schema::dropIfExists('khom');
-        Schema::dropIfExists('donvi');
+        Schema::dropIfExists('locations');
+        Schema::dropIfExists('questions');
     }
 };
