@@ -1,14 +1,16 @@
 <script setup>
-import {Link} from '@inertiajs/vue3';
+import {Link, usePage} from '@inertiajs/vue3';
 
 const props = defineProps({
-    links:Object
+    links: Object
 })
 
 
 window.onscroll = function () {
     scrollFunction()
 };
+
+const page = usePage();
 
 function scrollFunction() {
     const scroll = document.body.scrollTop
@@ -43,7 +45,13 @@ function scrollFunction() {
                             <Link :href="item.href">{{ item.text }}</Link>
                         </li>
                     </ul>
+
+                    <div v-if="page.props.auth" class="user-control">
+                        {{page.props.auth.name}}
+                        <Link href="/logout" class="logout-button">Logout</Link>
+                    </div>
                 </v-container>
+
             </div>
         </div>
         <div class=" d-block d-sm-none ">
@@ -146,6 +154,18 @@ function scrollFunction() {
     border-bottom: 2px solid white;
 }
 
+.user-control {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.logout-button {
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+}
 
 @media (max-width: 768px) {
     .header-top {
@@ -162,9 +182,9 @@ function scrollFunction() {
     }
 }
 
-@media (max-width: 375px){
+@media (max-width: 375px) {
 
-    .v-toolbar-title{
+    .v-toolbar-title {
         font-size: 0.9rem;
     }
 }

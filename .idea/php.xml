@@ -149,7 +149,6 @@
       <path value="$PROJECT_DIR$/source/vendor/pestphp/pest-plugin-profanity" />
       <path value="$PROJECT_DIR$/source/vendor/pestphp/pest-plugin-arch" />
       <path value="$PROJECT_DIR$/source/vendor/brianium/paratest" />
-      <path value="$PROJECT_DIR$/source/vendor/laravel/sanctum" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2">
