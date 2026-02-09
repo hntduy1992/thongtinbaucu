@@ -21,8 +21,12 @@ class User extends Authenticatable
         'name',
         'username',
         'password',
-        'is_admin',
+        'role',
     ];
+
+    const ROLE_USER = 0;
+    const ROLE_ADMIN = 1;
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -43,5 +47,8 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
         ];
+    }
+    public function isAdmin() {
+        return $this->role === self::ROLE_ADMIN;
     }
 }

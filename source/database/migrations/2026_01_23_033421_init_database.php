@@ -16,12 +16,14 @@ return new class extends Migration {
             $table->string('image')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
+            $table->timestamps();
         });
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->integer('sort');
             $table->text('question');
             $table->text('answer');
+            $table->timestamps();
         });
     }
 

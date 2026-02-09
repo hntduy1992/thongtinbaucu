@@ -12,7 +12,7 @@ const handleScroll = () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
     isHidden.value = scrollTop > 50;
 };
-
+const page = usePage()
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
 });
@@ -23,6 +23,11 @@ onUnmounted(() => {
 const drawer = ref(true)
 const links = [
     {text: 'TRANG CHỦ', href: '/#home'},
+    {
+        text: 'VĂN BẢN', href: null, children: [
+            {text: 'Ủy ban bầu cử', href: '/'}
+        ]
+    },
     {text: 'ĐƠN VỊ BẦU CỬ', href: '/#to-bau-cu'},
     {text: 'TRA CỨU ĐIỂM BỎ PHIẾU', href: '/tra-cuu-diem-bo-phieu'},
     {text: 'HỎI ĐÁP', href: '/#hoi-dap'},
@@ -48,7 +53,24 @@ const closeDrawer = () => {
                          @click="closeDrawer" class="text-red">{{ link.text }}
             </v-list-item>
 
-            <v-list-item>Manager</v-list-item>
+            <v-list-item v-if="page.props.auth">
+                <v-menu v-if="page.props.auth.is_admin">
+                    <template v-slot:activator="{ props }">
+                                <span
+                                    v-bind="props"
+                                >
+                                    {{ page.props.auth.user.name }}
+                                </span>
+                    </template>
+                    <v-list>
+                        <v-list-item href="/hoi-dap" link>
+                            Hỏi đáp
+                        </v-list-item>
+                    </v-list>
+
+                </v-menu>
+                <Link href="/logout" class="logout-button">Logout</Link>
+            </v-list-item>
         </v-list>
         <label id="drawer-overlay" for="drawer-toggle"></label>
         <div class="flex-grow-1 main-content">

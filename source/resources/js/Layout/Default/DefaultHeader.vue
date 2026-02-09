@@ -41,13 +41,27 @@ function scrollFunction() {
             <div id="navbar" class="navbar d-none  d-sm-block">
                 <v-container class="pa-0 ">
                     <ul class="menu">
-                        <li v-for="item of links">
-                            <Link :href="item.href">{{ item.text }}</Link>
+                        <li class="menu-item" v-for="(item,idx) of links">
+                            <Link class="menu-item__link" v-if="item.href" :href="item.href">{{ item.text }}</Link>
                         </li>
                     </ul>
 
                     <div v-if="page.props.auth" class="user-control">
-                        {{page.props.auth.name}}
+                        <v-menu>
+                            <template v-slot:activator="{ props }">
+                                <span
+                                    v-bind="props"
+                                >
+                                    {{ page.props.auth.user.name }}
+                                </span>
+                            </template>
+                            <v-list v-if="page.props.auth.is_admin">
+                                <v-list-item href="/hoi-dap" link>
+                                    Hỏi đáp
+                                </v-list-item>
+                            </v-list>
+
+                        </v-menu>
                         <Link href="/logout" class="logout-button">Logout</Link>
                     </div>
                 </v-container>
@@ -133,6 +147,7 @@ function scrollFunction() {
     justify-content: center;
     list-style: none;
     padding: 5px 0;
+
 }
 
 .menu a {
@@ -142,13 +157,14 @@ function scrollFunction() {
     margin: 0 5px;
 
 }
-
-.menu li {
+.menu .menu-item {
     border: 2px solid transparent;
     transition: all 0.3s ease-in-out;
+    min-width: 100px;
+    text-align: center;
 }
 
-.menu li:hover {
+.menu .menu-item:hover .menu-item__link {
     color: yellow;
     cursor: pointer;
     border-bottom: 2px solid white;
@@ -166,6 +182,8 @@ function scrollFunction() {
     color: white;
     margin-left: 10px;
 }
+
+
 
 @media (max-width: 768px) {
     .header-top {
