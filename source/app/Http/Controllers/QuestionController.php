@@ -39,7 +39,7 @@ class QuestionController extends Controller
 
 
         $question = Question::create([
-            'sort' => $request->sort || $this->getNextSort(),
+            'sort' => $request->sort ,
             'question' => $request->question,
             'answer' => $request->answer,
         ]);

@@ -11,6 +11,7 @@ import {computed} from "vue";
 
 const page = usePage()
 const units = computed(() => page.props.units || null)
+const questions = page.props.questions
 </script>
 
 <template>
@@ -21,7 +22,7 @@ const units = computed(() => page.props.units || null)
         <ToBauCu :items="units"></ToBauCu>
     </CustomElement>
     <CustomElement id="hoi-dap" class="bg-hoi-dap ">
-        <HoiDap></HoiDap>
+        <HoiDap :items="questions"></HoiDap>
     </CustomElement>
     <CustomElement id="media">
         <Media></Media>

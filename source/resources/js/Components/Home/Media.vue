@@ -12,8 +12,8 @@ const tab = ref('video');
                 <span class="bg-teal">MULTIMEDIA</span>
             </div>
             <v-tabs class="tab-title" align-tabs="center" v-model="tab">
-                <v-tab value="video">Video</v-tab>
                 <v-tab value="image">Hình ảnh</v-tab>
+                <v-tab value="video">Video</v-tab>
                 <v-tab value="info">Infographic</v-tab>
             </v-tabs>
             <v-tabs-window v-model="tab" >
@@ -23,10 +23,19 @@ const tab = ref('video');
                     </v-sheet>
                 </v-tabs-window-item>
                 <v-tabs-window-item value="image">
-                    <v-sheet class="pa-5">Image</v-sheet>
+                    <v-sheet class="pa-5">
+                        <v-carousel>
+                            <v-carousel-item v-for="img of 41" :src="'/images/tranh-bau-cu/'+ img +'.jpg'"></v-carousel-item>
+                        </v-carousel>
+                    </v-sheet>
                 </v-tabs-window-item>
                 <v-tabs-window-item value="info">
-                    <v-sheet class="pa-5">Infographic</v-sheet>
+                    <v-sheet class="pa-5 d-flex ">
+                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'" ></v-img>
+                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'" ></v-img>
+                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'" ></v-img>
+                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'" ></v-img>
+                    </v-sheet>
                 </v-tabs-window-item>
             </v-tabs-window>
         </v-container>

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DonViBauCuController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -12,7 +13,8 @@ Route::middleware('guest')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::get('/don-vi-bau-cu/{slug}', [SiteController::class, 'viewUnit'])->name('site.viewUnit');
-    Route::get('/tra-cuu-diem-bo-phieu', [SiteController::class, 'traCuuDiemBoPhieu'])->name('traCuuDiemBoPhieu');
+    Route::get('/units', [UnitController::class, 'index'])->name('unit.index');
+    Route::get('/units/create', [UnitController::class, 'create'])->name('unit.create');
     Route::get('/hoi-dap', [QuestionController::class, 'index'])->name('question.index');
     Route::post('/hoi-dap/create', [QuestionController::class, 'store'])->name('question.create');
     Route::put('/hoi-dap/{id}/update', [QuestionController::class, 'update'])->name('question.update');

@@ -22,7 +22,7 @@ const props = defineProps({
 
 <template>
     <v-container class="d-flex flex-column h-100 justify-center">
-        <div class="header-content">
+        <div class="header-content" >
             <div class="header-content__item bg-teal header-content__item--left">
                 <v-icon class="mr-2">mdi-home-map-marker</v-icon>
                 <span><b class="text-orange-accent-4">10 </b> Đơn vị bầu cử</span>

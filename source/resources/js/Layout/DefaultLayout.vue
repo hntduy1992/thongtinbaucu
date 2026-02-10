@@ -69,6 +69,9 @@ const closeDrawer = () => {
                         <v-list-item href="/hoi-dap" link>
                             Hỏi đáp
                         </v-list-item>
+                        <v-list-item href="/units" link>
+                            Units
+                        </v-list-item>
                     </v-list>
 
                 </v-menu>
