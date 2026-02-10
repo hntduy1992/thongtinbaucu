@@ -16,7 +16,7 @@ const showImageHandler = (location) => {
 </script>
 
 <template>
-    <v-container style="height: calc(100vh - 206px - 123px)">
+    <v-container class="page-content">
         <h3 class="text-center text-uppercase">
             <a class="title-link" :href="'/'+unit.file" target="_blank"> {{ unit.name }}</a>
         </h3>
@@ -43,12 +43,17 @@ const showImageHandler = (location) => {
 </template>
 
 <style scoped>
-.title-link{
+.page-content {
+    height: calc(100vh - 206px - 123px)
+}
+
+.title-link {
     font-size: 2rem;
     text-decoration: none;
     color: var(--root-color);
-    text-shadow: 1px 1px 5px rgba(0,0,0,.3);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
 }
+
 .dvbc-list {
     display: flex;
     justify-content: center;
@@ -88,5 +93,27 @@ const showImageHandler = (location) => {
 .image-preview .v-img {
     height: inherit;
     width: unset;
+}
+
+@media (max-width: 768px) {
+    .page-content {
+        height: unset;
+    }
+
+    .dvbc-item {
+        width: 50%;
+    }
+}
+
+@media (max-width: 425px) {
+    .page-content {
+        height: unset;
+        min-height: calc(100vh - 64px - 116px);
+    }
+}
+@media (max-width: 375px) {
+    .dvbc-item {
+        width: 100%;
+    }
 }
 </style>
