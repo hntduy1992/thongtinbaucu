@@ -1,7 +1,7 @@
 <script setup>
 import dayjs from "dayjs";
 import {onMounted, ref} from "vue";
-import imgBannerSaDec from '../../../images/banner-ban-chi-dao-sa-dec.jpg'
+import imgBannerSaDec from '../../../images/banner-ban-chi-dao-sa-dec.png'
 import img1 from '../../../images/tranh-bau-cu-phat-hanh/zip/14.jpg'
 import img2 from '../../../images/tranh-bau-cu-phat-hanh/zip/19.jpg'
 import img3 from '../../../images/tranh-bau-cu-phat-hanh/zip/15.jpg'
@@ -60,13 +60,13 @@ setInterval(() => {
             <v-col md="3" class="d-none d-md-flex flex-column justify-center align-center">
                 <ul class="list-banner">
                     <li class="banner-item">
-                        <a href="https://dongthap.gov.vn//documents/1527809/5217035/06-QDTU_dadongdau%20(1)_20260110113555.pdf/33340006-b145-586b-b08b-54831ddee80f">
+                        <a href="https://dongthap.gov.vn//documents/1527809/5217035/06-QDTU_dadongdau%20(1)_20260110113555.pdf/33340006-b145-586b-b08b-54831ddee80f" target="_blank">
                             <v-img
                                 src="https://dongthap.gov.vn/documents/1527809/6876490/banchidaobaucu.jpg/9cc6dad9-3a6b-acbc-5622-d46c8c053fc1?version=1.0&t=1767687284381"></v-img>
                         </a>
                     </li>
                     <li class="banner-item">
-                        <a href="/files/uybanbaucu.pdf">
+                        <a href="/files/ban-chi-dao-bau-cu.pdf" target="_blank">
                             <v-img :src="imgBannerSaDec"></v-img>
                         </a>
                     </li>

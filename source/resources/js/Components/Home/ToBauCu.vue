@@ -10,81 +10,19 @@ import img8 from '../../../images/tranh-bau-cu-phat-hanh/zip/16.jpg'
 import img9 from '../../../images/tranh-bau-cu-phat-hanh/zip/20.jpg'
 import img10 from '../../../images/tranh-bau-cu-phat-hanh/zip/4.jpg'
 import {ref} from "vue";
-import {router} from "@inertiajs/vue3";
+import {Link} from "@inertiajs/vue3";
 
 const imgItems = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10]
-const selectedIndex = ref(0)
-setInterval(() => {
-    if (selectedIndex.value === 9)
-        selectedIndex.value = 0
-    else
-        selectedIndex.value++
-}, 8000)
 
+const props = defineProps({
+    items: Object
+})
 
-const dvbc = [
-    {
-        name: 'Đơn vị bầu cử số 1',
-        list: ['Khóm Hòa Khánh', 'Khóm Hòa An', 'Khóm Kiến An'],
-        file: '/files/banbaucuso01_signed.pdf',
-        img: '/images/kvbp/kvbp_1.jpg',
-    },
-    {
-        name: 'Đơn vị bầu cử số 2', list: ['Khóm Phú Mỹ', 'Khóm Vĩnh Hòa'], file: '/files/banbaucuso02_signed.pdf',
-        img: '/images/kvbp/kvbp_2.jpg',
-    },
-    {
-        name: 'Đơn vị bầu cử số 3', list: ['Khóm Cái Sơn', 'Khóm Vĩnh Phước'], file: '/files/banbaucuso03_signed.pdf',
-        img: '/images/kvbp/kvbp_3.jpg',
-    },
-    {
-        name: 'Đơn vị bầu cử số 4',
-        list: ['Khóm Cầu Đình', 'Khóm Tân Bình', 'Khóm Tân An'],
-        file: '/files/banbaucuso04_signed.pdf',
-        img: '/images/kvbp/kvbp_4.jpg',
-    },
-    {
-        name: 'Đơn vị bầu cử số 5',
-        list: ['Khóm Tân Thuận', 'Khóm Sa Giang', 'Khóm Tân Hòa'],
-        file: '/files/banbaucuso05_signed.pdf',
-        img: '/images/kvbp/kvbp_5.jpg',
-    },
-    {
-        name: 'Đơn vị bầu cử số 6',
-        list: ['Khóm Tân Lợi', 'Khóm Tân Thành', 'Khóm Tân Lập'],
-        file: '/files/banbaucuso06_signed.pdf',
-        img: '/images/kvbp/kvbp_6.jpg',
-    },
-    {
-        name: 'Đơn vị bầu cử số 7',
-        list: ['Khóm Cái Đôi', 'Khóm Tân Hưng', 'Khóm Tân Quy', 'Tân Long'],
-        file: '/files/banbaucuso07_signed.pdf',
-        img: '/images/kvbp/kvbp_7.jpg',
-    },
-    {
-        name: 'Đơn vị bầu cử số 8',
-        list: ['Khóm Vườn Hồng', 'Khóm Tân Mỹ', 'Khóm Sa Nhiên', 'Khóm Tân Hiệp'],
-        file: '/files/banbaucuso08_signed.pdf',
-        img: '/images/kvbp/kvbp_8.jpg',
-    },
-    {
-        name: 'Đơn vị bầu cử số 9',
-        list: ['Khóm Khánh Hòa', 'Khóm Đông Quới', 'Khóm Khánh Nhơn'],
-        file: '/files/banbaucuso09_signed.pdf',
-        img: '/images/kvbp/kvbp_9.jpg',
-    },
-    {
-        name: 'Đơn vị bầu cử số 10',
-        list: ['Khóm Khánh Nghĩa', 'Khóm Đông Huề', 'Khóm Đông Khánh', 'Khóm Đông Giang'],
-        file: '/files/banbaucuso10_signed.pdf',
-        img: '/images/kvbp/kvbp_10.jpg',
-    },
-]
 </script>
 
 <template>
     <v-container class="d-flex flex-column h-100 justify-center">
-        <div class="header-content">
+        <div class="header-content" >
             <div class="header-content__item bg-teal header-content__item--left">
                 <v-icon class="mr-2">mdi-home-map-marker</v-icon>
                 <span><b class="text-orange-accent-4">10 </b> Đơn vị bầu cử</span>
@@ -92,13 +30,14 @@ const dvbc = [
 
             <div class="header-content__item bg-teal header-content__item--right">
                 <v-icon class="mr-2">mdi-account-group-outline</v-icon>
-                <span><b class="text-orange-accent-4">37 </b>Điểm bỏ phiếu</span>
+                <span><b class="text-orange-accent-4">37 </b>Khu vực bỏ phiếu</span>
             </div>
         </div>
 
         <ul class="dvbc-list">
-            <li class="dvbc-item" v-for="item of dvbc" >
-                <a :href=item.file><img class="dvbc-img" :src="item.img" :alt="item.name"></a>
+            <li class="dvbc-item" v-for="item of items">
+                <Link :href="'don-vi-bau-cu/'+item.slug"><img class="dvbc-img" :src="item.img" :alt="item.name"></img>
+                </Link>
             </li>
         </ul>
     </v-container>
@@ -131,28 +70,32 @@ const dvbc = [
     border-radius: 50px 0 0 50px;
 }
 
-.dvbc-list{
+.dvbc-list {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     list-style-type: none;
 }
-.dvbc-item{
+
+.dvbc-item {
     width: 20%;
     padding: 10px;
     cursor: pointer;
 }
-.dvbc-item:hover .dvbc-img{
+
+.dvbc-item:hover .dvbc-img {
     transform: scale(1);
     box-shadow: 2px 2px 5px #ccc;
 }
-.dvbc-img{
+
+.dvbc-img {
     width: 100%;
     border-radius: 10px;
     transform: scale(0.95);
     transition: all 0.3s ease-in-out;
 }
+
 li {
     color: var(--root-color);
 }
@@ -176,11 +119,13 @@ li {
         flex: 1;
         border-radius: 0;
     }
-    .dvbc-item{
+
+    .dvbc-item {
         width: 50%;
         padding: 5px;
     }
-    .dvbc-item .dvbc-img{
+
+    .dvbc-item .dvbc-img {
         transform: scale(1);
         box-shadow: 2px 2px 5px #ccc;
     }
@@ -206,7 +151,8 @@ li {
     .header-content__item span {
         z-index: 1;
     }
-    .dvbc-item{
+
+    .dvbc-item {
         width: 75%;
         padding: 5px;
     }
@@ -229,7 +175,8 @@ li {
         font-size: 1.5rem;
         text-shadow: 0 0 10px white;
     }
-    .dvbc-item{
+
+    .dvbc-item {
         width: 90%;
     }
 }

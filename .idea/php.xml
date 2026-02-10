@@ -149,6 +149,10 @@
       <path value="$PROJECT_DIR$/source/vendor/pestphp/pest-plugin-profanity" />
       <path value="$PROJECT_DIR$/source/vendor/pestphp/pest-plugin-arch" />
       <path value="$PROJECT_DIR$/source/vendor/brianium/paratest" />
+      <path value="$PROJECT_DIR$/source/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/source/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/source/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/source/vendor/symfony/http-client-contracts" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2">
