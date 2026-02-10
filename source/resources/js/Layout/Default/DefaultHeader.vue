@@ -1,6 +1,6 @@
 <script setup>
 import {Link, usePage} from '@inertiajs/vue3';
-
+import NavItem from "./NavItem.vue";
 const props = defineProps({
     links: Object
 })
@@ -40,10 +40,8 @@ function scrollFunction() {
             </div>
             <div id="navbar" class="navbar d-none  d-sm-block">
                 <v-container class="pa-0 ">
-                    <ul class="menu">
-                        <li class="menu-item" v-for="(item,idx) of links">
-                            <Link class="menu-item__link" v-if="item.href" :href="item.href">{{ item.text }}</Link>
-                        </li>
+                    <ul class="menu-root">
+                        <NavItem v-for="link of links" :item="link"></NavItem>
                     </ul>
 
                     <div v-if="page.props.auth" class="user-control">
@@ -60,7 +58,6 @@ function scrollFunction() {
                                     Hỏi đáp
                                 </v-list-item>
                             </v-list>
-
                         </v-menu>
                         <Link href="/logout" class="logout-button">Logout</Link>
                     </div>
@@ -141,34 +138,13 @@ function scrollFunction() {
     display: flex;
     align-items: center;
 }
-
-.menu {
+/* nav menu */
+.menu-root{
     display: flex;
     justify-content: center;
-    list-style: none;
-    padding: 5px 0;
-
+    list-style-type: none;
 }
-
-.menu a {
-    color: white;
-    text-decoration-line: none;
-    padding: 5px;
-    margin: 0 5px;
-
-}
-.menu .menu-item {
-    border: 2px solid transparent;
-    transition: all 0.3s ease-in-out;
-    min-width: 100px;
-    text-align: center;
-}
-
-.menu .menu-item:hover .menu-item__link {
-    color: yellow;
-    cursor: pointer;
-    border-bottom: 2px solid white;
-}
+/* nav menu */
 
 .user-control {
     position: absolute;
@@ -182,7 +158,6 @@ function scrollFunction() {
     color: white;
     margin-left: 10px;
 }
-
 
 
 @media (max-width: 768px) {

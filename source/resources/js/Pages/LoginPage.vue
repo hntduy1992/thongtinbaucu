@@ -2,6 +2,7 @@
 import {useForm} from "@inertiajs/vue3";
 import logo from "../../images/logo-sadec.png";
 import AuthLayout from "../Layout/AuthLayout.vue";
+import {ref} from "vue";
 
 defineOptions({
     layout: AuthLayout
@@ -10,6 +11,7 @@ const loginForm = useForm({
     username: "",
     password: "",
 })
+const showPassword = ref(false)
 const submit = () => {
     loginForm.post('/login')
 }

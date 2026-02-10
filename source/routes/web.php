@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DonViBauCuController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -10,6 +11,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'loginHandle'])->name('login.handle');
 });
 Route::middleware('auth')->group(function () {
+    Route::get('/don-vi-bau-cu/{slug}', [SiteController::class, 'viewUnit'])->name('site.viewUnit');
     Route::get('/tra-cuu-diem-bo-phieu', [SiteController::class, 'traCuuDiemBoPhieu'])->name('traCuuDiemBoPhieu');
     Route::get('/hoi-dap', [QuestionController::class, 'index'])->name('question.index');
     Route::post('/hoi-dap/create', [QuestionController::class, 'store'])->name('question.create');

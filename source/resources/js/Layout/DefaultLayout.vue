@@ -22,16 +22,18 @@ onUnmounted(() => {
 });
 const drawer = ref(true)
 const links = [
-    {text: 'TRANG CHỦ', href: '/#home'},
+    {icon: 'mdi-home', text: 'TRANG CHỦ', href: '/#home'},
     {
+        icon: null,
         text: 'VĂN BẢN', href: null, children: [
-            {text: 'Ủy ban bầu cử', href: '/'}
+            {icon: null, text: 'ỦY BAN BẦU BẦU CỬ', href: null,file:'/files/qd-tl-uy-ban-bau-cu.pdf'},
+            {icon: null, text: 'QUY CHẾ LÀM VIỆC', href: null,file:'/files/quy-che-lam-viec-uy-ban-bau-cu.pdf'},
+            {icon: null, text: 'PHÂN CÔNG PHỤ TRÁCH', href: null,file:'/files/phan-cong-thanh-vien-ubbc.pdf'},
         ]
     },
-    {text: 'ĐƠN VỊ BẦU CỬ', href: '/#to-bau-cu'},
-    {text: 'TRA CỨU ĐIỂM BỎ PHIẾU', href: '/tra-cuu-diem-bo-phieu'},
-    {text: 'HỎI ĐÁP', href: '/#hoi-dap'},
-    {text: 'MULTIMEDIA', href: '/#media'},
+    {icon: null, text: 'ĐƠN VỊ BẦU CỬ', href: '/#to-bau-cu'},
+    {icon: null, text: 'HỎI ĐÁP', href: '/#hoi-dap'},
+    {icon: null, text: 'MULTIMEDIA', href: '/#media'},
 ]
 
 const closeDrawer = () => {
@@ -48,6 +50,7 @@ const closeDrawer = () => {
                 <v-icon>mdi-menu</v-icon>
             </label>
         </DefaultHeader>
+
         <v-list id="drawer" class="bg-drawer" @click="closeDrawer">
             <v-list-item link v-for="link of links" :href="link.href"
                          @click="closeDrawer" class="text-red">{{ link.text }}
