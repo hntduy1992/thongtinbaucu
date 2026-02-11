@@ -17,9 +17,12 @@ const showImageHandler = (location) => {
 
 <template>
     <v-container class="page-content">
-        <h3 class="text-center text-uppercase">
-            <a class="title-link" :href="'/'+unit.file" target="_blank"> {{ unit.name }}</a>
+        <h3 class="text-center text-uppercase d-flex flex-column">
+            <span class="title-text">{{unit.name}}</span>
+            <a class="title-link"  :href="'/'+unit.file"  target="_blank">Quyết định thành lập</a>
         </h3>
+
+        <p class="text-center">Gồm {{locations.length}} Khu vực bỏ phiếu: {{locations.map(x=>x.place).join( ', ')}}</p>
 
         <ul class="dvbc-list">
             <li class="dvbc-item " v-for="location of locations" @click.prevent="showImageHandler(location)">
@@ -43,17 +46,15 @@ const showImageHandler = (location) => {
 </template>
 
 <style scoped>
-.page-content {
-    height: calc(100vh - 206px - 123px)
-}
-
-.title-link {
+.title-text {
     font-size: 2rem;
     text-decoration: none;
     color: var(--root-color);
     text-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
 }
-
+.title-link{
+    font-size: .8rem;
+}
 .dvbc-list {
     display: flex;
     justify-content: center;
@@ -96,9 +97,6 @@ const showImageHandler = (location) => {
 }
 
 @media (max-width: 768px) {
-    .page-content {
-        height: unset;
-    }
 
     .dvbc-item {
         width: 50%;
@@ -106,10 +104,7 @@ const showImageHandler = (location) => {
 }
 
 @media (max-width: 425px) {
-    .page-content {
-        height: unset;
-        min-height: calc(100vh - 64px - 116px);
-    }
+
 }
 @media (max-width: 375px) {
     .dvbc-item {

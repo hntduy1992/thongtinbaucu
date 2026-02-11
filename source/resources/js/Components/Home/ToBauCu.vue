@@ -23,12 +23,12 @@ const props = defineProps({
 <template>
     <v-container class="d-flex flex-column h-100 justify-center">
         <div class="header-content" >
-            <div class="header-content__item bg-teal header-content__item--left">
+            <div class="header-content__item  header-content__item--left">
                 <v-icon class="mr-2">mdi-home-map-marker</v-icon>
                 <span><b class="text-orange-accent-4">10 </b> Đơn vị bầu cử</span>
             </div>
 
-            <div class="header-content__item bg-teal header-content__item--right">
+            <div class="header-content__item header-content__item--right">
                 <v-icon class="mr-2">mdi-account-group-outline</v-icon>
                 <span><b class="text-orange-accent-4">37 </b>Khu vực bỏ phiếu</span>
             </div>
@@ -53,13 +53,14 @@ const props = defineProps({
 }
 
 .header-content__item {
-    padding: 20px;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     color: white;
     border-bottom: 3px solid var(--root-color);
     text-shadow: 2px 0 5px #0d47a1;
     justify-content: center;
+    background-color: var(--nav-color);
 }
 
 .header-content__item--right {
@@ -137,6 +138,7 @@ li {
         position: relative;
         display: flex;
         justify-content: center;
+
     }
 
     .header-content__item .v-icon {

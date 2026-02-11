@@ -22,9 +22,6 @@ class SiteController extends Controller
 
     public function viewUnit($slug)
     {
-//        Validator::make($request->all(), [
-//            'slug' => ['required', 'exists:units,slug']
-//        ]);
         $unit = Unit::query()->where('slug', $slug)->firstOrFail();
         $locations = Location::query()->where('unit_id', $unit->id)->get();
         return Inertia::render('DonViBauCuPage', ['unit' => $unit, 'locations' => $locations]);

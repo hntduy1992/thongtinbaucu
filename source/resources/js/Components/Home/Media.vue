@@ -3,38 +3,64 @@
 import {ref} from "vue";
 
 const tab = ref('video');
+
+const videos = [
+    {
+        image: 'images/videos/img1.png',
+        src: 'https://youtu.be/Cl_HHQdqEeM?si=gNrJA3i7c3PtOGIN',
+        title: 'Quyền và trách nhiệm của Đại biểu Hội đồng nhân dân'
+    },
+    {
+        image: 'images/videos/img2.png',
+        src: 'https://youtu.be/bbqCDfLbdLU?si=LzhsUy2NjxjEAhph',
+        title: 'Tiêu chuẩn của Đại biểu Quốc hội và HĐND'
+    },
+    {
+        image: 'images/videos/img3.png',
+        src: 'https://youtu.be/gXi0OjefU4U?si=hwF5U03twQyDMiCV',
+        title: 'Ý nghĩa cuộc bầu cử Đại biểu Quốc hội khóa XVI và HĐND các cấp'
+    },
+]
 </script>
 
 <template>
     <aside>
         <v-container class="media-wrap">
             <div class="title-text">
-                <span class="bg-teal">MULTIMEDIA</span>
+                <span>MULTIMEDIA</span>
             </div>
             <v-tabs class="tab-title" align-tabs="center" v-model="tab">
                 <v-tab value="image">Hình ảnh</v-tab>
                 <v-tab value="video">Video</v-tab>
                 <v-tab value="info">Infographic</v-tab>
             </v-tabs>
-            <v-tabs-window v-model="tab" >
+            <v-tabs-window v-model="tab">
                 <v-tabs-window-item value="video">
-                    <v-sheet class=" pa-5">
-                        Video
+                    <v-sheet class=" pa-5 ">
+                        <v-list class="video-list">
+                            <v-list-item class="video-item" v-for="video of videos">
+                                <a class="video_link" :href="video.src" target="_blank">
+                                    <v-img :src="video.image"></v-img>
+                                    <p class="text-center text-overflow-ellipsis">{{video.title}}</p>
+                                </a>
+                            </v-list-item>
+                        </v-list>
                     </v-sheet>
                 </v-tabs-window-item>
                 <v-tabs-window-item value="image">
                     <v-sheet class="pa-5">
                         <v-carousel>
-                            <v-carousel-item v-for="img of 41" :src="'/images/tranh-bau-cu/'+ img +'.jpg'"></v-carousel-item>
+                            <v-carousel-item v-for="img of 41"
+                                             :src="'/images/tranh-bau-cu/'+ img +'.jpg'"></v-carousel-item>
                         </v-carousel>
                     </v-sheet>
                 </v-tabs-window-item>
                 <v-tabs-window-item value="info">
                     <v-sheet class="pa-5 d-flex ">
-                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'" ></v-img>
-                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'" ></v-img>
-                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'" ></v-img>
-                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'" ></v-img>
+                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'"></v-img>
+                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'"></v-img>
+                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'"></v-img>
+                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'"></v-img>
                     </v-sheet>
                 </v-tabs-window-item>
             </v-tabs-window>
@@ -55,31 +81,43 @@ aside {
 
 .title-text {
     font-size: calc(1.6rem + 0.4vw);
-    border-bottom: 5px solid teal;
+    border-bottom: 5px solid var(--root-color);
     text-align: center;
 }
 
 .title-text span {
-    padding: 10px;
+    padding:  10px 20px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-}
-.video-list{
-    display: flex;
-}
-.video-item:first-child{
-    width: 50%;
-}
-.video-item{
-    width: 25%;
+    background-color: var(--nav-color);
+    color: white;
 }
 
+.video-list {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.video-item {
+    width: 33.33%;
+    transform: scale(0.9);
+    transition: transform .2s ease-in-out;
+}
+.video-item:hover{
+    transform: scale(1);
+}
+.video_link{
+    text-decoration: none;
+    color: inherit;
+}
 @media (max-width: 768px) {
 
-    .title-text{
+    .title-text {
         font-size: calc(1rem + 0.2vw);
     }
-    .tab-title button{
+
+    .tab-title button {
         font-size: calc(0.5rem + 0.2vw);
     }
 }
