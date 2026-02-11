@@ -1,12 +1,10 @@
 :root {
     --root-color: rgb(168, 103, 2);
     --root-color-opacity: rgba(168, 103, 2, 0.1);
-    --nav-color:  rgb(217, 9, 1);
 }
 
 html {
     scroll-behavior: smooth;
     font-family: "Roboto", sans-serif;
 }
-
 

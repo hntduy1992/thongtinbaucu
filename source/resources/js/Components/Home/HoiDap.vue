@@ -9,14 +9,10 @@ const header = [
 const items = usePage().props.questions
 const dataItems = ref(items)
 
-const selected = ref(null)
+const selected = ref(2)
 const search = ref(null)
 const searchHandler = () => {
-    if (search.value === null) {
-        dataItems.value = items
-        return;
-    }
-    dataItems.value = items.filter(x => x.question.toLowerCase().includes(search.value.toLowerCase()))
+    dataItems.value = items.filter(x => x.question.includes(search.value))
 }
 </script>
 
@@ -24,23 +20,22 @@ const searchHandler = () => {
     <aside>
         <v-container>
             <div class="d-none tablet-title">
-                <span >Hỏi đáp về bầu cử</span>
+                <span class="bg-teal">Hỏi đáp về bầu cử</span>
                 <v-text-field variant="outlined" density="compact" prepend-icon="mdi-magnify"
                               placeholder="Nhập để tìm câu hỏi có liên quan" hide-details
-                              v-model="search" clearable @click:clear.prevent="searchHandler">
+                              v-model="search">
                     <template v-slot:append>
-                        <v-btn color="info" @click.prevent="searchHandler">Tìm</v-btn>
+                        <v-btn>Tìm</v-btn>
                     </template>
                 </v-text-field>
             </div>
             <div class="hoidap-wrap">
                 <div class="section-title">
-                    <span>Hỏi đáp về bầu cử</span>
+                    <span class="bg-teal">Hỏi đáp về bầu cử</span>
                 </div>
                 <v-container>
                     <v-text-field class="section-search" variant="outlined" density="compact" prepend-icon="mdi-magnify"
-                                  placeholder="Nhập để tìm câu hỏi có liên quan" hide-details v-model="search" clearable
-                                  @click:clear.prevent="searchHandler">
+                                  placeholder="Nhập để tìm câu hỏi có liên quan" hide-details v-model="search">
 
                         <template v-slot:append>
                             <v-btn color="info" @click.prevent="searchHandler">Tìm kiếm</v-btn>
@@ -88,21 +83,18 @@ aside {
     top: 0;
     left: 50%;
     transform: translateY(50%) translateX(-50%);
-
 }
 
 .section-title span {
     text-wrap: nowrap;
-    padding: 10px 20px;
-    border-radius: 50px;
+    padding: 20px;
+    border-radius: 30px;
     border-left: 4px solid var(--root-color);
     border-right: 4px solid var(--root-color);
     position: absolute;
     top: 50%;
     left: 50%;
-    color:white;
     transform: translateY(-50%) translateX(-50%);
-    background-color: var(--nav-color);
 }
 
 .section-content {
@@ -132,6 +124,7 @@ aside {
 
     .tablet-title {
         display: block !important;
+
     }
 
     .tablet-title span {
@@ -141,7 +134,6 @@ aside {
         text-align: center;
         font-size: calc(1rem + 0.2vw);
         border-bottom: 2px solid var(--root-color);
-        background-color: var(--nav-color);
     }
 
     .hoidap-wrap {
