@@ -18,17 +18,48 @@ const showImageHandler = (location) => {
 <template>
     <v-container class="page-content">
         <h3 class="text-center text-uppercase d-flex flex-column">
-            <span class="title-text">{{unit.name}}</span>
-            <a class="title-link"  :href="'/'+unit.file"  target="_blank">Quyết định thành lập</a>
+            <span class="title-text">{{ unit.name }}</span>
+            <a class="title-link" :href="'/'+unit.file" target="_blank">Quyết định thành lập</a>
         </h3>
 
-        <p class="text-center">Gồm {{locations.length}} Khu vực bỏ phiếu: {{locations.map(x=>x.place).join( ', ')}}</p>
+        <p class="text-center">Gồm {{ locations.length }} Khu vực bỏ phiếu</p>
 
-        <ul class="dvbc-list">
-            <li class="dvbc-item " v-for="location of locations" @click.prevent="showImageHandler(location)">
-                <v-img class="dvbc-img" style="width: 100%" :src="'/'+location.img" :alt="location.name"/>
-            </li>
-        </ul>
+
+        <v-list>
+            <v-list-item v-for="location of locations" >
+                //@click.prevent="showImageHandler(location)"
+                <v-card>
+                    <v-card-title class="location-title">{{ location.name }}</v-card-title>
+                    <v-card-text>
+                        <v-row>
+                            <v-col>
+                                <v-img class="dvbc-img" style="width: 100%" :src="'/storage/'+location.img"
+                                       :alt="location.name"/>
+                            </v-col>
+                            <v-col>
+                                <v-card>
+                                    <v-card-title>Tổ bầu cử số</v-card-title>
+                                    <v-card-text>
+                                        <ul>
+                                            <li>Khóm: {{ location.region }}</li>
+                                            <li>Địa bàn cử tri bỏ phiếu: {{ location.scope }}</li>
+                                            <li>Điểm bỏ phiếu: {{ location.place }}</li>
+                                            <li>Địa chỉ: {{ location.address }}</li>
+                                            <li>Điện thoại: {{ location.phone }}</li>
+                                        </ul>
+                                        <div class="map">
+                                            <a :href="'https://maps.google.com/maps?q=' +location.latitude+ ','+ location.longitude" target="_blank">Xem trên Google Maps</a>
+                                            <img :src="'/storage/' + location.qr" alt="QR"/>
+                                        </div>
+                                    </v-card-text>
+                                </v-card>
+                            </v-col>
+                        </v-row>
+                    </v-card-text>
+                </v-card>
+
+            </v-list-item>
+        </v-list>
     </v-container>
     <v-dialog v-if="locationShow" v-model="showImage">
         <v-card color="transparent" class="image-preview">
@@ -39,7 +70,7 @@ const showImageHandler = (location) => {
                 </v-btn>
             </v-toolbar>
             <v-img
-                :src="'/'+locationShow.img"
+                :src="'/storage/'+locationShow.img"
             ></v-img>
         </v-card>
     </v-dialog>
@@ -52,13 +83,14 @@ const showImageHandler = (location) => {
     color: var(--root-color);
     text-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
 }
-.title-link{
+
+.title-link {
     font-size: .8rem;
 }
+
 .dvbc-list {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     flex-wrap: wrap;
     list-style-type: none;
 }
@@ -106,6 +138,7 @@ const showImageHandler = (location) => {
 @media (max-width: 425px) {
 
 }
+
 @media (max-width: 375px) {
     .dvbc-item {
         width: 100%;

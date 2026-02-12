@@ -14,7 +14,8 @@ const formData = useForm({
     phone: '',
     address: '',
     region: '',
-    scope: ''
+    scope: '',
+    place: ''
 })
 
 const submit = () => {
@@ -58,6 +59,8 @@ const submit = () => {
                     <v-text-field class="mr-2" variant="outlined" v-model="formData.region" label="Khóm"
                                   :error-messages="formData.errors.region" width="400" clearable></v-text-field>
                     <v-text-field class="mr-2" variant="outlined" v-model="formData.scope" label="Phạm vi"
+                                  :error-messages="formData.errors.scope" width="400" clearable></v-text-field>
+                    <v-text-field class="mr-2" variant="outlined" v-model="formData.place" label="Điểm bỏ phiếu"
                                   :error-messages="formData.errors.scope" width="400" clearable></v-text-field>
 
                     <v-toolbar color="transparent">

@@ -80,17 +80,19 @@ aside {
 }
 
 .title-text {
-    font-size: calc(1.6rem + 0.4vw);
-    border-bottom: 5px solid var(--root-color);
+    font-size: calc(1.2rem + 0.5vw);
     text-align: center;
+    border-bottom: 5px solid var(--nav-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .title-text span {
-    padding:  10px 20px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    background-color: var(--nav-color);
-    color: white;
+    padding: 10px 15px;
+    color:var(--nav-color);
+    font-weight: bolder;
 }
 
 .video-list {

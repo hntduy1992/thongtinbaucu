@@ -15,8 +15,10 @@ class LocationController extends Controller
     public function index()
     {
         $units = Unit::query()->get(['id', 'name']);
-        $locations = Location::all();
-        return Inertia::render('Location/LocationIndexPage', ['locations' => $locations,'units'=>$units]);
+        $locations = Location::query()->with(['unit' => function ($query) {
+            $query->select('id', 'name');
+        }])->get();
+        return Inertia::render('Location/LocationIndexPage', ['locations' => $locations, 'units' => $units]);
     }
 
     public function create()
@@ -32,8 +34,8 @@ class LocationController extends Controller
     {
         Validator::make($request->all(), [
             'name' => 'required',
-            'file' => 'sometimes|mimes:pdf|max:10240',
-            'img' => 'sometimes|mimes:jpg,jpeg,png|max:2048',
+            'file' => 'nullable|mimes:pdf|max:10240',
+            'img' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ], [
             'name.required' => 'Vui lòng không bỏ trống',
             'file.mimes' => 'File phải là pdf',
@@ -46,15 +48,17 @@ class LocationController extends Controller
 
         $locationNew = [
             'name' => $request->input('name'),
+            'unit_id' => $request->input('unit_id'),
             'slug' => $slug,
             'address' => $request->input('address'),
             'region' => $request->input('region'),
             'phone' => $request->input('phone'),
             'scope' => $request->input('scope'),
+            'place' => $request->input('place'),
             'latitude' => $request->input('latitude'),
             'longitude' => $request->input('longitude'),
-            'file' => '',
-            'img' => '',
+            'file' => null,
+            'img' => null,
         ];
 
 
@@ -62,18 +66,33 @@ class LocationController extends Controller
             $file = $request->file('file');
             $fileName = $slug . '-' . Str::lower(Str::random(5));
             $extension = $file->getClientOriginalExtension();
-            $locationNew->file = $file->storeAs('files/kvbp', $fileName . '.' . $extension, 'public');
+            try {
+                $locationNew['file'] = $file->storeAs('files/kvbp', $fileName . '.' . $extension, 'public');
+            } catch (\Exception $exception) {
+                return back()->with(['error' => 'Lỗi lưu file (' . $exception . ')']);
+            }
         }
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             $fileName = $slug . '-' . Str::lower(Str::random(5));
             $extension = $file->getClientOriginalExtension();
-            $locationNew->img = $file->storeAs('images/kvbp/chi-tiet', $fileName . '.' . $extension, 'public');
+            try {
+                $locationNew['img'] = $file->storeAs('images/kvbp/chi-tiet', $fileName . '.' . $extension, 'public');
+            } catch (\Exception $exception) {
+                return back()->with(['error' => 'Lỗi lưu img (' . $exception . ')']);
+            }
         }
 
         if (Location::create($locationNew)) {
             return back()->with(['type' => 'success', 'message' => 'Thêm mới thành công']);
         }
         return back()->with(['type' => 'error', 'message' => 'Thêm mới thất bại']);
+    }
+
+    public function view($id)
+    {
+        $units = Unit::query()->get(['id', 'name']);
+        $location = Location::find($id);
+        return Inertia::render('Location/LocationUpdatePage', ['units' => $units,'location'=>$location]);
     }
 }

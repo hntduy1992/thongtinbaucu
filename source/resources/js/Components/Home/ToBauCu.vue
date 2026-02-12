@@ -22,15 +22,18 @@ const props = defineProps({
 
 <template>
     <v-container class="d-flex flex-column h-100 justify-center">
-        <div class="header-content" >
+        <div class="header__title">
+            <span>BAN BẦU CỬ HỘI ĐỒNG NHÂN DÂN PHƯỜNG SA ĐÉC</span>
+        </div>
+        <div class="header-content">
             <div class="header-content__item  header-content__item--left">
                 <v-icon class="mr-2">mdi-home-map-marker</v-icon>
-                <span><b class="text-orange-accent-4">10 </b> Đơn vị bầu cử</span>
+                <span><b class="text-orange-accent-4">10 </b>  Đơn vị bầu cử</span>
             </div>
 
             <div class="header-content__item header-content__item--right">
-                <v-icon class="mr-2">mdi-account-group-outline</v-icon>
-                <span><b class="text-orange-accent-4">37 </b>Khu vực bỏ phiếu</span>
+                <v-icon class="mr-2">mdi-map-marker-radius</v-icon>
+                <span><b class="text-orange-accent-4">37 </b>Tổ bầu cử và Khu vực bỏ phiếu</span>
             </div>
         </div>
 
@@ -44,12 +47,26 @@ const props = defineProps({
 </template>
 
 <style scoped>
+.header__title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 5px solid var(--nav-color);
+}
+.header__title span{
+    padding: 10px 15px;
+    text-align: center;
+    font-size: calc(1.2rem + 0.5vw);
+    color: var(--nav-color);
+    font-weight: bolder;
+}
 .header-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: calc(1.2rem + 0.5vw);
+    font-size: calc(.8rem + 0.5vw);
     margin-bottom: calc(15px + 0.2vh);
+
 }
 
 .header-content__item {
@@ -61,14 +78,15 @@ const props = defineProps({
     text-shadow: 2px 0 5px #0d47a1;
     justify-content: center;
     background-color: var(--nav-color);
+
 }
 
 .header-content__item--right {
-    border-radius: 0 50px 50px 0;
+    border-bottom-right-radius: 40px;
 }
 
 .header-content__item--left {
-    border-radius: 50px 0 0 50px;
+    border-bottom-left-radius: 40px;
 }
 
 .dvbc-list {
@@ -114,6 +132,7 @@ li {
 @media (max-width: 768px) {
     .header-content {
         font-size: calc(1rem + 0.2vw);
+
     }
 
     .header-content__item {
