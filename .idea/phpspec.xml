@@ -8,21 +8,6 @@
       <PhpSpecSuiteConfiguration>
         <option name="myPath" value="$PROJECT_DIR$/source" />
       </PhpSpecSuiteConfiguration>
-      <PhpSpecSuiteConfiguration>
-        <option name="myPath" value="$PROJECT_DIR$/source" />
-      </PhpSpecSuiteConfiguration>
-      <PhpSpecSuiteConfiguration>
-        <option name="myPath" value="$PROJECT_DIR$/source" />
-      </PhpSpecSuiteConfiguration>
-      <PhpSpecSuiteConfiguration>
-        <option name="myPath" value="$PROJECT_DIR$/source" />
-      </PhpSpecSuiteConfiguration>
-      <PhpSpecSuiteConfiguration>
-        <option name="myPath" value="$PROJECT_DIR$/source" />
-      </PhpSpecSuiteConfiguration>
-      <PhpSpecSuiteConfiguration>
-        <option name="myPath" value="$PROJECT_DIR$/source" />
-      </PhpSpecSuiteConfiguration>
     </suites>
   </component>
 </project>
