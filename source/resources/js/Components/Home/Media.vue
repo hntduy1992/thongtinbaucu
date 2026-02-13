@@ -7,32 +7,32 @@ const tab = ref('video');
 
 const videos = [
     {
-        image: 'images/videos/img1.png',
+        image: '/images/videos/img1.png',
         src: 'https://youtu.be/Cl_HHQdqEeM?si=gNrJA3i7c3PtOGIN',
         title: 'Quyền và trách nhiệm của Đại biểu Hội đồng nhân dân'
     },
     {
-        image: 'images/videos/img2.png',
+        image: '/images/videos/img2.png',
         src: 'https://youtu.be/bbqCDfLbdLU?si=LzhsUy2NjxjEAhph',
         title: 'Tiêu chuẩn của Đại biểu Quốc hội và HĐND'
     },
     {
-        image: 'images/videos/img3.png',
+        image: '/images/videos/img3.png',
         src: 'https://youtu.be/gXi0OjefU4U?si=hwF5U03twQyDMiCV',
         title: 'Ý nghĩa cuộc bầu cử Đại biểu Quốc hội khóa XVI và HĐND các cấp'
     },
     {
-        image: 'images/videos/img4.png',
+        image: '/images/videos/img4.png',
         src: 'https://youtu.be/ozEQhsJbqZM?si=WLe7gg56RNSr7B6P',
         title: 'Nhiệt liệt chào mừng Đại hội Đại biểu toàn quốc lần thứ XIV của Đảng'
     },
     {
-        image: 'images/videos/img5.png',
+        image: '/images/videos/img5.png',
         src: 'https://youtu.be/0_xCD53Siok?si=B6Xw81M923zuzNh7',
         title: 'Hỏi đáp về bầu cử đại biểu Quốc hội khóa XVI và đại biểu HĐND các cấp nhiệm kỳ 2026- 2031 (Kỳ 7)'
     },
     {
-        image: 'images/videos/img6.png',
+        image: '/images/videos/img6.png',
         src: 'https://youtu.be/w0qbffK3hDM?si=gDWPqIH2vv-5w9Fz',
         title: 'Hỏi đáp về bầu cử đại biểu Quốc hội khóa XVI và đại biểu HĐND các cấp nhiệm kỳ 2026- 2031 (Kỳ 6)'
     },
