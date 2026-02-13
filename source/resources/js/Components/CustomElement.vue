@@ -21,6 +21,7 @@ aside {
 
 .top-aside {
     height: calc(100vh - 200px);
+    min-height: unset;
     padding-top: 0;
     overflow: hidden;
 }

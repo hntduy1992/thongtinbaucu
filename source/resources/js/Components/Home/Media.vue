@@ -56,14 +56,27 @@ const videos = [
                     </v-sheet>
                 </v-tabs-window-item>
                 <v-tabs-window-item value="info" class="d-flex">
-                    <a class="info-parent" style="background-image: url('/images/info/media/media-parent.jpg')">
-                        <span>Tiêu đề</span>
-                    </a>
-                    <div class="info-child-list">
-                        <a class="info-child"  style="background-image: url('/images/info/media/media-child-1.jpg')">
-
-                        </a>
-                    </div>
+                    <v-list class="w-100 d-flex ">
+                        <v-list-item class="info-parent" style="background-image: url('/images/info/media/media-parent.jpg')">
+                            <span class="info-parent__title">BẦU CỬ ĐẠI HỘI ĐẠI BIỂU QUỐC HỘI KHÓA XVI VÀ ĐẠI BIỂU HĐND CÁC CẤP, NHIỆM KỲ 2026 - 2031</span>
+                        </v-list-item>
+                        <v-list-item class="info-parent">
+                            <v-list class="w-100 d-flex flex-wrap info-child-list">
+                                <v-list-item class="info-child"  style="background-image: url('/images/info/media/media-child-1.jpg')">
+                                    <span class="info-child__title">CÁC ĐƠN VỊ BẦU CỬ ĐẠI BIỂU HĐND PHƯỜNG SA ĐÉC</span>
+                                </v-list-item>
+                                <v-list-item class="info-child"  style="background-image: url('/images/info/media/media-child-2.jpg')">
+                                    <span class="info-child__title">28 BAN BẦU CỬ ĐAI BIỂU HĐND TỈNH ĐỒNG THÁP 2026 - 2031</span>
+                                </v-list-item>
+                                <v-list-item class="info-child"  style="background-image: url('/images/info/media/media-child-3.jpg')">
+                                    <span class="info-child__title">ĐỒNG THÁP: 06 BAN BẦU CỬ ĐẠI BIỂU QUỐC HỘI KHÓA XVI</span>
+                                </v-list-item>
+                                <v-list-item class="info-child"  style="background-image: url('/images/info/media/media-child-4.jpg')">
+                                    <span class="info-child__title">ĐỒNG THÁP CÓ 06 ĐƠN VỊ BẦU CỬ, BẦU 18 ĐẠI BIỂU QUỐC HỘI</span>
+                                </v-list-item>
+                            </v-list>
+                        </v-list-item>
+                    </v-list>
                     <a href="">Xem thêm</a>
                 </v-tabs-window-item>
             </v-tabs-window>
@@ -118,21 +131,44 @@ aside {
     text-decoration: none;
     color: inherit;
 }
+.info-parent,.info-child{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    transform: scale(0.95);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.info-parent:hover,.info-child:hover{
+    transform: scale(1);
+}
 
 .info-parent{
     width: 50%;
     height: 600px;
     background-size: cover;
+
 }
-.info-child-list{
-    display: flex;
-    width: 50%;
-    flex-wrap: wrap;
+.info-parent__title,
+.info-child__title{
+    display: block;
+    width: 100%;
+    background-color: yellow;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
 }
+
 .info-child{
     width: 50%;
     height: 300px;
     background-size: cover;
+}
+.info-child__title{
+    font-size: .8rem;
 }
 .info-child img{
     width: 100%;
