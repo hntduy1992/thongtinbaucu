@@ -68,7 +68,6 @@ function scrollFunction() {
                         <Link href="/logout" class="logout-button">Logout</Link>
                     </div>
                 </v-container>
-
             </div>
         </div>
         <div class=" d-block d-sm-none ">
