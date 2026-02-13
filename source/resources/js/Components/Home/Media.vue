@@ -7,32 +7,32 @@ const tab = ref('video');
 
 const videos = [
     {
-        image: 'img1.png',
+        image: '/images/img1.png',
         src: 'https://youtu.be/Cl_HHQdqEeM?si=gNrJA3i7c3PtOGIN',
         title: 'Quyền và trách nhiệm của Đại biểu Hội đồng nhân dân'
     },
     {
-        image: 'img2.png',
+        image: '/images/img2.png',
         src: 'https://youtu.be/bbqCDfLbdLU?si=LzhsUy2NjxjEAhph',
         title: 'Tiêu chuẩn của Đại biểu Quốc hội và HĐND'
     },
     {
-        image: 'img3.png',
+        image: '/images/img3.png',
         src: 'https://youtu.be/gXi0OjefU4U?si=hwF5U03twQyDMiCV',
         title: 'Ý nghĩa cuộc bầu cử Đại biểu Quốc hội khóa XVI và HĐND các cấp'
     },
     {
-        image: 'img4.png',
+        image: '/images/img4.png',
         src: 'https://youtu.be/ozEQhsJbqZM?si=WLe7gg56RNSr7B6P',
         title: 'Nhiệt liệt chào mừng Đại hội Đại biểu toàn quốc lần thứ XIV của Đảng'
     },
     {
-        image: 'img5.png',
+        image: '/images/img5.png',
         src: 'https://youtu.be/0_xCD53Siok?si=B6Xw81M923zuzNh7',
         title: 'Hỏi đáp về bầu cử đại biểu Quốc hội khóa XVI và đại biểu HĐND các cấp nhiệm kỳ 2026- 2031 (Kỳ 7)'
     },
     {
-        image: 'img6.png',
+        image: '/images/img6.png',
         src: 'https://youtu.be/w0qbffK3hDM?si=gDWPqIH2vv-5w9Fz',
         title: 'Hỏi đáp về bầu cử đại biểu Quốc hội khóa XVI và đại biểu HĐND các cấp nhiệm kỳ 2026- 2031 (Kỳ 6)'
     },
@@ -56,7 +56,7 @@ const videos = [
                         <v-list class="video-list">
                             <v-list-item class="video-item" v-for="video of videos">
                                 <a class="video_link" :href="video.src" target="_blank">
-                                    <v-img :src="`/storage/images/videos/${video.image}`"></v-img>
+                                    <v-img :src="video.image"></v-img>
                                     <p class="text-center text-overflow-ellipsis">{{ video.title }}</p>
                                 </a>
                             </v-list-item>
