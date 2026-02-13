@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    protected $fillable = ['name', 'slug', 'file', 'img', 'latitude', 'longitude', 'phone', 'address', 'scope', 'region', 'qr', 'unit_id', 'place'];
+    protected $fillable = ['name', 'slug', 'file', 'img', 'latitude', 'longitude', 'phone', 'address', 'scope', 'region', 'qr', 'unit_id', 'place','info'];
 
     public function unit(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

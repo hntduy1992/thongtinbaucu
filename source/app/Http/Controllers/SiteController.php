@@ -15,7 +15,7 @@ class SiteController extends Controller
 {
     public function home()
     {
-        $units = Unit::all();
+        $units = Unit::with('locations')->get();
         $questions = Question::all();
         return Inertia::render('HomePage', ['units' => $units, 'questions' => $questions]);
     }

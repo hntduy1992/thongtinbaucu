@@ -10,7 +10,7 @@ import img8 from '../../../images/tranh-bau-cu-phat-hanh/zip/16.jpg'
 import img9 from '../../../images/tranh-bau-cu-phat-hanh/zip/20.jpg'
 import img10 from '../../../images/tranh-bau-cu-phat-hanh/zip/4.jpg'
 import {ref} from "vue";
-import {Link} from "@inertiajs/vue3";
+import {Link, router} from "@inertiajs/vue3";
 
 const imgItems = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10]
 
@@ -38,28 +38,43 @@ const props = defineProps({
         </div>
 
         <ul class="dvbc-list">
-            <li class="dvbc-item" v-for="item of items">
-                <Link :href="'don-vi-bau-cu/'+item.slug"><img class="dvbc-img" :src="item.img" :alt="item.name"></img>
-                </Link>
+            <li class="pa-2" style="width: 20%" v-for="item of items">
+                <v-card class="dvbc-item" color="transparent" variant="text">
+                    <v-card-title class="text-center">
+                        <span class="text-uppercase dvbp-title">{{ item.name }}</span>
+                    </v-card-title>
+                    <v-card-subtitle>
+                        <p class="dvbp-subtitle">(Gồm các khóm {{ item.locations.map(x => x.region).join(', ') }})</p>
+                    </v-card-subtitle>
+                    <v-card-text class="d-flex flex-wrap justify-center align-stretch">
+                        <div class="location-mini" v-for="location of item.locations"
+                             @click="router.visit(`/don-vi-bau-cu/${item.slug}/#kvbp_${location.id}`)">
+                            <v-img width="100%" height="100%"
+                                   :src="'/images/kvbp/thanh-phan/kvbp_'+location.id + '.png'"></v-img>
+                        </div>
+                    </v-card-text>
+                </v-card>
             </li>
         </ul>
     </v-container>
 </template>
 
 <style scoped>
-.header__title{
+.header__title {
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 5px solid var(--nav-color);
 }
-.header__title span{
+
+.header__title span {
     padding: 10px 15px;
     text-align: center;
     font-size: calc(1.2rem + 0.5vw);
     color: var(--nav-color);
     font-weight: bolder;
 }
+
 .header-content {
     display: flex;
     justify-content: center;
@@ -98,14 +113,41 @@ const props = defineProps({
 }
 
 .dvbc-item {
-    width: 20%;
+    background-image: url("../../../images/kvbp/dvbp-background.jpg");
+    background-size: cover;
+    background-position: center;
+
     padding: 10px;
     cursor: pointer;
+    border-radius: 20px;
+    border: 2px solid var(--nav-color);
+}
+
+.dvbp-title,
+.dvbp-subtitle {
+    color: var(--nav-color);
+    font-weight: bolder;
+}
+
+.dvbp-subtitle {
+    padding: 0 20px;
+    text-wrap: wrap;
+    text-align: center;
 }
 
 .dvbc-item:hover .dvbc-img {
     transform: scale(1);
     box-shadow: 2px 2px 5px #ccc;
+}
+
+.location-mini {
+    width: 50%;
+    transform: scale(.9);
+    transition: all 0.3s ease-in-out;
+}
+
+.location-mini:hover {
+    transform: scale(1);
 }
 
 .dvbc-img {

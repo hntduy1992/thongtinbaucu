@@ -10,6 +10,6 @@ class Unit extends Model
 
     public  function locations(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Unit::class, 'unit_id', 'id');
+        return $this->hasMany(Location::class, 'unit_id', 'id');
     }
 }

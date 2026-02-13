@@ -22,35 +22,63 @@ const showImageHandler = (location) => {
             <a class="title-link" :href="'/'+unit.file" target="_blank">Quyết định thành lập</a>
         </h3>
 
-        <p class="text-center">Gồm {{ locations.length }} Khu vực bỏ phiếu</p>
+        <p class="text-center">Gồm {{ locations.length }} Khu vực bỏ phiếu:
+            <a class="mr-2 text-red" v-for="location of locations" :href="`#kvbp_${location.id}`">Khu vực bỏ phiếu {{ location.name }} </a>
+        </p>
 
 
         <v-list>
-            <v-list-item v-for="location of locations" >
-                //@click.prevent="showImageHandler(location)"
-                <v-card>
-                    <v-card-title class="location-title">{{ location.name }}</v-card-title>
-                    <v-card-text>
+            <v-list-item v-for="location of locations">
+                <!--                @click.prevent="showImageHandler(location)"-->
+                <v-card :id="'kvbp_'+ location.id">
+                    <v-card-title class="location-title text-uppercase ">Khu vực bỏ phiếu {{
+                            location.name
+                        }}
+                    </v-card-title>
+                    <v-card-text class="location-section">
                         <v-row>
-                            <v-col>
-                                <v-img class="dvbc-img" style="width: 100%" :src="'/storage/'+location.img"
-                                       :alt="location.name"/>
+                            <v-col class="d-flex justify-center align-center">
+                                <v-img class="location-image" :src="'/storage/'+location.info"
+                                       :alt="location.name" @click.prevent="showImageHandler(location.info)"/>
+                                <v-img class="location-image" :src="'/storage/'+location.img"
+                                       :alt="location.name" @click.prevent="showImageHandler(location.img)"/>
                             </v-col>
-                            <v-col>
-                                <v-card>
-                                    <v-card-title>Tổ bầu cử số</v-card-title>
-                                    <v-card-text>
-                                        <ul>
-                                            <li>Khóm: {{ location.region }}</li>
-                                            <li>Địa bàn cử tri bỏ phiếu: {{ location.scope }}</li>
-                                            <li>Điểm bỏ phiếu: {{ location.place }}</li>
-                                            <li>Địa chỉ: {{ location.address }}</li>
-                                            <li>Điện thoại: {{ location.phone }}</li>
-                                        </ul>
-                                        <div class="map">
-                                            <a :href="'https://maps.google.com/maps?q=' +location.latitude+ ','+ location.longitude" target="_blank">Xem trên Google Maps</a>
-                                            <img :src="'/storage/' + location.qr" alt="QR"/>
-                                        </div>
+                            <v-col class="align-content-center">
+                                <v-card color="var(--root-color-opacity)">
+                                    <v-card-title class="text-uppercase text-white"
+                                                  style="background-color: var(--nav-color)">Tổ bầu cử
+                                        {{ location.name }}
+                                    </v-card-title>
+                                    <v-card-text class="pa-5">
+                                        <v-row>
+                                            <v-col md="8">
+                                                <ul class="info-location-list">
+                                                    <li class="info-location-item ">Khóm: {{ location.region }}</li>
+                                                    <li class="info-location-item">Địa bàn cử tri bỏ phiếu:
+                                                        {{ location.scope }}
+                                                    </li>
+                                                    <li class="info-location-item">Điểm bỏ phiếu: {{
+                                                            location.place
+                                                        }}
+                                                    </li>
+                                                    <li class="info-location-item">Địa chỉ: {{ location.address }}</li>
+                                                    <li class="info-location-item">Điện thoại: {{ location.phone }}</li>
+                                                </ul>
+                                            </v-col>
+                                            <v-col>
+                                                <div class="d-flex flex-column align-center">
+                                                    <img class="border pa-2 bg-red rounded" style="width: 150px"
+                                                         :src="'/storage/' + location.qr" alt="QR"/>
+                                                    <a class="location-map"
+                                                       :href="'https://maps.google.com/maps?q=' +location.latitude+ ','+ location.longitude"
+                                                       target="_blank">
+                                                        <v-icon>mdi-map-marker-radius-outline</v-icon>
+                                                        Xem trên Google Maps</a>
+                                                </div>
+                                            </v-col>
+                                        </v-row>
+
+
                                     </v-card-text>
                                 </v-card>
                             </v-col>
@@ -70,13 +98,29 @@ const showImageHandler = (location) => {
                 </v-btn>
             </v-toolbar>
             <v-img
-                :src="'/storage/'+locationShow.img"
+                :src="'/storage/'+locationShow"
             ></v-img>
         </v-card>
     </v-dialog>
 </template>
 
 <style scoped>
+.location-title {
+    font-size: 2rem;
+    padding: 10px 15px;
+    color: var(--nav-color);
+    font-weight: bolder;
+}
+
+.location-section {
+    border: 2px solid var(--nav-color);
+    border-radius: 20px;
+}
+
+.info-location-item {
+
+}
+
 .title-text {
     font-size: 2rem;
     text-decoration: none;
@@ -88,29 +132,27 @@ const showImageHandler = (location) => {
     font-size: .8rem;
 }
 
-.dvbc-list {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    list-style-type: none;
+.info-location-list {
+    padding-left: 15px;
+    list-style-type: square;
+    font-size: calc(1rem + 0.2vw);
 }
 
-.dvbc-item {
-    width: 20%;
-    padding: 10px;
-    cursor: pointer;
+.location-image {
+    margin: 30px;
 }
 
-.dvbc-item:hover .dvbc-img {
-    transform: scale(1);
-    box-shadow: 2px 2px 5px #ccc;
-}
-
-.dvbc-img {
-    width: 100%;
+.location-map {
+    color: var(--nav-color);
+    padding: 12px;
+//background-color: var(--nav-color); text-decoration: none;
     border-radius: 10px;
-    transform: scale(0.95);
     transition: all 0.3s ease-in-out;
+}
+
+.location-map:hover {
+    color: green;
+    transform: scale(1.1);
 }
 
 .image-preview .v-toolbar {
