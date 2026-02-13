@@ -2,20 +2,21 @@
 import {computed} from "vue";
 
 const props = defineProps({
-    topAside: false
+    topAside: false,
+    oneScreen: false
 })
 
 </script>
 
 <template>
-    <aside :class="{'top-aside':topAside}">
+    <aside :class="{'top-aside':topAside, 'one-screen':oneScreen}">
         <slot></slot>
     </aside>
 </template>
 
 <style scoped>
 aside {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .top-aside {
@@ -23,16 +24,21 @@ aside {
     padding-top: 0;
     overflow: hidden;
 }
-@media (max-width: 768px){
-    aside{
+.one-screen{
+    height: 100vh;
+}
+@media (max-width: 768px) {
+    aside {
         height: unset;
     }
-    .top-aside{
+
+    .top-aside {
         min-height: calc(100vh - 118px);
     }
 }
+
 @media (max-width: 576px) {
-    .top-aside{
+    .top-aside {
         min-width: unset;
         height: calc(100vh - 64px);
     }

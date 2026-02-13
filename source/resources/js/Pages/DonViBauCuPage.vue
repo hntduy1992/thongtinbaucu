@@ -22,67 +22,57 @@ const showImageHandler = (location) => {
             <a class="title-link" :href="'/'+unit.file" target="_blank">Quyết định thành lập</a>
         </h3>
 
-        <p class="text-center">Gồm {{ locations.length }} Khu vực bỏ phiếu:
-            <a class="mr-2 text-red" v-for="location of locations" :href="`#kvbp_${location.id}`">Khu vực bỏ phiếu {{ location.name }} </a>
+        <p class="mt-2 d-flex flex-md-row flex-column align-center justify-center">
+            <span >Gồm {{ locations.length }} Khu vực bỏ phiếu: </span>
+            <a class="ml-2 text-red" v-for="location of locations" :href="`#kvbp_${location.id}`">Khu vực bỏ phiếu
+                {{ location.name }}</a>
         </p>
 
 
-        <v-list>
-            <v-list-item v-for="location of locations">
-                <!--                @click.prevent="showImageHandler(location)"-->
+        <v-list class="location-list">
+            <v-list-item v-for="location of locations" class="location-list__item">
                 <v-card :id="'kvbp_'+ location.id">
-                    <v-card-title class="location-title text-uppercase ">Khu vực bỏ phiếu {{
+                    <div class="location-title text-uppercase ">Khu vực bỏ phiếu {{
                             location.name
                         }}
-                    </v-card-title>
-                    <v-card-text class="location-section">
-                        <v-row>
-                            <v-col class="d-flex justify-center align-center">
-                                <v-img class="location-image" :src="'/storage/'+location.info"
-                                       :alt="location.name" @click.prevent="showImageHandler(location.info)"/>
-                                <v-img class="location-image" :src="'/storage/'+location.img"
-                                       :alt="location.name" @click.prevent="showImageHandler(location.img)"/>
-                            </v-col>
-                            <v-col class="align-content-center">
-                                <v-card color="var(--root-color-opacity)">
-                                    <v-card-title class="text-uppercase text-white"
-                                                  style="background-color: var(--nav-color)">Tổ bầu cử
-                                        {{ location.name }}
-                                    </v-card-title>
-                                    <v-card-text class="pa-5">
-                                        <v-row>
-                                            <v-col md="8">
-                                                <ul class="info-location-list">
-                                                    <li class="info-location-item ">Khóm: {{ location.region }}</li>
-                                                    <li class="info-location-item">Địa bàn cử tri bỏ phiếu:
-                                                        {{ location.scope }}
-                                                    </li>
-                                                    <li class="info-location-item">Điểm bỏ phiếu: {{
-                                                            location.place
-                                                        }}
-                                                    </li>
-                                                    <li class="info-location-item">Địa chỉ: {{ location.address }}</li>
-                                                    <li class="info-location-item">Điện thoại: {{ location.phone }}</li>
-                                                </ul>
-                                            </v-col>
-                                            <v-col>
-                                                <div class="d-flex flex-column align-center">
-                                                    <img class="border pa-2 bg-red rounded" style="width: 150px"
-                                                         :src="'/storage/' + location.qr" alt="QR"/>
-                                                    <a class="location-map"
-                                                       :href="'https://maps.google.com/maps?q=' +location.latitude+ ','+ location.longitude"
-                                                       target="_blank">
-                                                        <v-icon>mdi-map-marker-radius-outline</v-icon>
-                                                        Xem trên Google Maps</a>
-                                                </div>
-                                            </v-col>
-                                        </v-row>
+                    </div>
+                    <v-card-text class="location-section" style="background-color: var(--root-color-opacity)">
+                        <v-img class="location-image" :src="'/storage/'+location.img"
+                               :alt="location.name" @click.prevent="showImageHandler(location.img)"/>
+                        <div class="flex-fill pa-5 d-flex flex-column">
+                            <div class="location-info-title">Tổ bầu cử
+                                {{ location.name }}
+                            </div>
+                            <ul class="info-location-list">
+                                <li class="info-location-item ">Khóm: {{ location.region }}</li>
+                                <li class="info-location-item">Địa bàn cử tri bỏ phiếu:
+                                    {{ location.scope }}
+                                </li>
+                                <li class="info-location-item">Điểm bỏ phiếu: {{
+                                        location.place
+                                    }}
+                                </li>
+                                <li class="info-location-item ">Địa chỉ: {{ location.address }}</li>
+                                <li class="info-location-item">Điện thoại: {{ location.phone }}</li>
+                            </ul>
 
+                            <div class="flex-fill d-flex flex-column justify-center align-center">
+                                <div class="location-qr">
+                                    <img class="location-qr__qr"
+                                         :src="'/storage/' + location.qr" alt="QR"/>
+                                    <v-img class="d-none location-image location-image__sm "
+                                           :src="'/storage/'+location.img"
+                                           :alt="location.name" @click.prevent="showImageHandler(location.img)"/>
+                                </div>
+                                <a class="location-map"
+                                   :href="'https://maps.google.com/maps?q=' +location.latitude+ ','+ location.longitude"
+                                   target="_blank">
+                                    <v-icon>mdi-map-marker-radius-outline</v-icon>
+                                    Xem trên Google Maps</a>
+                            </div>
 
-                                    </v-card-text>
-                                </v-card>
-                            </v-col>
-                        </v-row>
+                        </div>
+
                     </v-card-text>
                 </v-card>
 
@@ -106,19 +96,35 @@ const showImageHandler = (location) => {
 
 <style scoped>
 .location-title {
-    font-size: 2rem;
-    padding: 10px 15px;
+    font-size: 1.5rem;
     color: var(--nav-color);
     font-weight: bolder;
+    text-shadow: 2px 2px 3px #333;
 }
 
 .location-section {
     border: 2px solid var(--nav-color);
     border-radius: 20px;
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    display: flex;
 }
 
-.info-location-item {
+.location-image {
+    width: 400px;
+    transform: scale(0.9);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
 
+.location-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.location-list__item {
+    width: 1000px;
 }
 
 .title-text {
@@ -136,16 +142,24 @@ const showImageHandler = (location) => {
     padding-left: 15px;
     list-style-type: square;
     font-size: calc(1rem + 0.2vw);
+    margin-bottom: 15px;
 }
 
-.location-image {
-    margin: 30px;
+.location-info-title {
+    font-size: 1.5rem;
+    color: var(--nav-color);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+.location-image:hover {
+    transform: scale(0.95);
 }
 
 .location-map {
     color: var(--nav-color);
     padding: 12px;
-//background-color: var(--nav-color); text-decoration: none;
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
 }
@@ -170,15 +184,98 @@ const showImageHandler = (location) => {
     width: unset;
 }
 
-@media (max-width: 768px) {
+.location-qr .location-image {
+    display: none;
+}
 
-    .dvbc-item {
-        width: 50%;
+.location-qr__qr {
+    width: 150px;
+    border-radius: 12px;
+    border: 2px solid var(--nav-color);
+}
+
+
+@media (max-width: 768px) {
+    .location-section {
+        border-radius: 15px;
+        padding: 10px;
+    }
+
+    .location-image {
+        width: 250px;
+    }
+
+    .location-qr {
+        width: 100px;
+        border-radius: 12px;
+        border: 2px solid var(--nav-color);
+    }
+
+    .info-location-list {
+        padding-left: 5px;
+        list-style-type: square;
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    .location-info-title {
+        font-size: 1.5rem;
+        color: var(--nav-color);
+        font-weight: bold;
+        margin-bottom: 5px;
     }
 }
 
 @media (max-width: 425px) {
+    .location-section {
+        border-radius: 15px;
+        padding: 10px;
+    }
 
+    .location-image {
+        display: none;
+    }
+
+    .location-qr {
+        display: flex;
+        width: 100%;
+        border: none;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .location-qr .location-image {
+        width: 100%;
+    }
+
+    .location-qr__qr {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateX(25%) translateY(-50%);
+        width: 100px;
+        border-radius: 12px;
+        border: 2px solid var(--nav-color);
+    }
+
+    .info-location-list {
+        padding-left: 5px;
+        list-style-type: square;
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    .location-info-title {
+        font-size: 1.5rem;
+        color: var(--nav-color);
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .location-image.location-image__sm {
+        display: block !important;
+        width: 100px;
+    }
 }
 
 @media (max-width: 375px) {

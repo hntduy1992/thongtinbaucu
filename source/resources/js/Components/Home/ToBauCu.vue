@@ -38,15 +38,15 @@ const props = defineProps({
         </div>
 
         <ul class="dvbc-list">
-            <li class="pa-2" style="width: 20%" v-for="item of items">
-                <v-card class="dvbc-item" color="transparent" variant="text">
+            <li class="pa-2 dvbc-item"  v-for="item of items">
+                <v-card class="dvbc-item__card" color="transparent" variant="text">
                     <v-card-title class="text-center">
                         <span class="text-uppercase dvbp-title">{{ item.name }}</span>
                     </v-card-title>
                     <v-card-subtitle>
                         <p class="dvbp-subtitle">(Gồm các khóm {{ item.locations.map(x => x.region).join(', ') }})</p>
                     </v-card-subtitle>
-                    <v-card-text class="d-flex flex-wrap justify-center align-stretch">
+                    <v-card-text class="d-flex flex-wrap justify-center align-stretch pa-1">
                         <div class="location-mini" v-for="location of item.locations"
                              @click="router.visit(`/don-vi-bau-cu/${item.slug}/#kvbp_${location.id}`)">
                             <v-img width="100%" height="100%"
@@ -111,13 +111,13 @@ const props = defineProps({
     flex-wrap: wrap;
     list-style-type: none;
 }
-
-.dvbc-item {
+.dvbc-item{
+    width: 20%;
+}
+.dvbc-item__card {
     background-image: url("../../../images/kvbp/dvbp-background.jpg");
     background-size: cover;
     background-position: center;
-
-    padding: 10px;
     cursor: pointer;
     border-radius: 20px;
     border: 2px solid var(--nav-color);
@@ -134,10 +134,12 @@ const props = defineProps({
     text-wrap: wrap;
     text-align: center;
 }
-
-.dvbc-item:hover .dvbc-img {
-    transform: scale(1);
-    box-shadow: 2px 2px 5px #ccc;
+.dvbp-title{
+    font-size: calc(0.3rem + 0.5vw);
+}
+.dvbp-subtitle{
+    padding: 0;
+    font-size: calc(0.3rem + 0.3vw);
 }
 
 .location-mini {
@@ -150,12 +152,6 @@ const props = defineProps({
     transform: scale(1);
 }
 
-.dvbc-img {
-    width: 100%;
-    border-radius: 10px;
-    transform: scale(0.95);
-    transition: all 0.3s ease-in-out;
-}
 
 li {
     color: var(--root-color);
@@ -170,7 +166,9 @@ li {
     width: 100%;
 }
 
+@media (max-width: 1024px){
 
+}
 @media (max-width: 768px) {
     .header-content {
         font-size: calc(1rem + 0.2vw);
@@ -186,10 +184,8 @@ li {
         width: 50%;
         padding: 5px;
     }
-
-    .dvbc-item .dvbc-img {
-        transform: scale(1);
-        box-shadow: 2px 2px 5px #ccc;
+    .dvbp-title{
+        font-size: 1rem;
     }
 }
 
