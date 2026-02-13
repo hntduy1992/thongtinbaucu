@@ -33,10 +33,10 @@ const searchHandler = () => {
                     </template>
                 </v-text-field>
             </div>
+            <div class="section-title">
+                <span>HỎI ĐÁP VỀ BẦU CỬ</span>
+            </div>
             <div class="hoidap-wrap">
-                <div class="section-title">
-                    <span>Hỏi đáp về bầu cử</span>
-                </div>
                 <v-container>
                     <v-text-field class="section-search" variant="outlined" density="compact" prepend-icon="mdi-magnify"
                                   placeholder="Nhập để tìm câu hỏi có liên quan" hide-details v-model="search" clearable
@@ -82,27 +82,19 @@ aside {
 }
 
 .section-title {
-    font-size: 1.6rem;
+    font-size: calc(1.2rem + 0.5vw);
     text-align: center;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateY(50%) translateX(-50%);
-
+    border-bottom: 5px solid var(--nav-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .section-title span {
-    text-wrap: nowrap;
-    padding: 10px 20px;
-    border-radius: 50px;
-    border-left: 4px solid var(--root-color);
-    border-right: 4px solid var(--root-color);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    color:white;
-    transform: translateY(-50%) translateX(-50%);
-    background-color: var(--nav-color);
+    padding: 10px 15px;
+    color:var(--nav-color);
+    font-weight: bolder;
 }
 
 .section-content {

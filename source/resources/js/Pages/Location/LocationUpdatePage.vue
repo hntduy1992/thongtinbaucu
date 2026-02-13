@@ -1,25 +1,28 @@
 <script setup>
 
-import {useForm, usePage, Link} from "@inertiajs/vue3";
+import {useForm, usePage, Link, router} from "@inertiajs/vue3";
 
 const page = usePage()
 const units = page.props.units
+const location = page.props.location
+const img = location.img
+const file = '/sdsd'
 const formData = useForm({
-    name: '',
-    unit_id: null,
+    name: location.name,
+    unit_id: location.unit_id,
     file: null,
     img: null,
-    latitude: 0,
-    longitude: 0,
-    phone: '',
-    address: '',
-    region: '',
-    scope: '',
-    place: ''
+    latitude: location.latitude,
+    longitude: location.longitude,
+    phone: location.phone,
+    address: location.address,
+    region: location.region,
+    scope: location.scope,
+    place: location.place
 })
 
 const submit = () => {
-    formData.post('/locations', {
+    formData.put('/locations', {
         forceFormData: true,
         onSuccess: (res) => {
             console.log(res)
@@ -29,25 +32,33 @@ const submit = () => {
         }
     })
 }
+console.log(location)
 </script>
 
 <template>
     <v-container>
         <v-card>
-            <v-card-title>Thêm mới Khu vực bỏ phiếu</v-card-title>
-            <v-list-item >
+            <v-card-title>Cập nhật Khu vực bỏ phiếu</v-card-title>
+            <v-list-item>
                 <v-form class="d-flex flex-wrap pa-2" @submit.prevent="submit">
                     <v-select class="mr-2" variant="outlined" :items="units" item-value="id" item-title="name"
                               v-model="formData.unit_id" label="Đơn vị bầu cử"
                               :error-messages="formData.errors.unit_id" width="400" clearable></v-select>
                     <v-text-field class="mr-2" variant="outlined" v-model="formData.name" label="Tên khu vực"
-                                  :error-messages="formData.errors.name" width="400" clearable></v-text-field>
+                                  :error-messages="formData.errors.name" width="400" clearable>
+                    </v-text-field>
                     <v-file-input filter-by-type="application/pdf" class="mr-2" variant="outlined"
-                                  v-model="formData.file" label="Quyết định"
-                                  :error-messages="formData.errors.file" width="400" clearable></v-file-input>
+                                  v-model="formData.file" :label="file || 'Quyết định'"
+                                  :error-messages="formData.errors.file" width="400" clearable
+                    >
+                    </v-file-input>
                     <v-file-input filter-by-type="image/jpeg, image/png, image/jpg" class="mr-2" variant="outlined"
                                   v-model="formData.img" label="Hình"
-                                  :error-messages="formData.errors.img" width="400" clearable></v-file-input>
+                                  :error-messages="formData.errors.img" width="400" clearable>
+                        <template v-slot:prepend-inner>
+                            <img style="height: 30px" :src="'/storage/'+img">
+                        </template>
+                    </v-file-input>
                     <v-text-field class="mr-2" variant="outlined" v-model="formData.latitude" label="Kinh độ"
                                   :error-messages="formData.errors.latitude" width="400" clearable></v-text-field>
                     <v-text-field class="mr-2" variant="outlined" v-model="formData.longitude" label="Vĩ độ"

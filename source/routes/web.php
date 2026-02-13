@@ -16,8 +16,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/don-vi-bau-cu/{slug}', [SiteController::class, 'viewUnit'])->name('site.viewUnit');
 
     Route::get('/locations/create', [LocationController::class, 'create'])->name('location.create');
-    Route::get('/locations/{slug}', [LocationController::class, 'view'])->name('location.view');
-    Route::put('/locations/{slug}', [LocationController::class, 'update'])->name('location.update');
+    Route::get('/locations/{id}', [LocationController::class, 'view'])->name('location.view');
+    Route::put('/locations/{id}', [LocationController::class, 'update'])->name('location.update');
     Route::post('/locations', [LocationController::class, 'store'])->name('location.store');
     Route::delete('/locations', [LocationController::class, 'destroy'])->name('location.destroy');
     Route::get('/locations', [LocationController::class, 'index'])->name('location.index');

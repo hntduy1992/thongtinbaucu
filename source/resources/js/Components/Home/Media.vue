@@ -41,7 +41,7 @@ const videos = [
                             <v-list-item class="video-item" v-for="video of videos">
                                 <a class="video_link" :href="video.src" target="_blank">
                                     <v-img :src="video.image"></v-img>
-                                    <p class="text-center text-overflow-ellipsis">{{video.title}}</p>
+                                    <p class="text-center text-overflow-ellipsis">{{ video.title }}</p>
                                 </a>
                             </v-list-item>
                         </v-list>
@@ -55,13 +55,16 @@ const videos = [
                         </v-carousel>
                     </v-sheet>
                 </v-tabs-window-item>
-                <v-tabs-window-item value="info">
-                    <v-sheet class="pa-5 d-flex ">
-                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'"></v-img>
-                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'"></v-img>
-                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'"></v-img>
-                        <v-img :src="'/images/huong-dan-bo-phieu.jpg'"></v-img>
-                    </v-sheet>
+                <v-tabs-window-item value="info" class="d-flex">
+                    <a class="info-parent" style="background-image: url('/images/info/media/media-parent.jpg')">
+                        <span>Tiêu đề</span>
+                    </a>
+                    <div class="info-child-list">
+                        <a class="info-child"  style="background-image: url('/images/info/media/media-child-1.jpg')">
+
+                        </a>
+                    </div>
+                    <a href="">Xem thêm</a>
                 </v-tabs-window-item>
             </v-tabs-window>
         </v-container>
@@ -80,17 +83,19 @@ aside {
 }
 
 .title-text {
-    font-size: calc(1.6rem + 0.4vw);
-    border-bottom: 5px solid var(--root-color);
+    font-size: calc(1.2rem + 0.5vw);
     text-align: center;
+    border-bottom: 5px solid var(--nav-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .title-text span {
-    padding:  10px 20px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    background-color: var(--nav-color);
-    color: white;
+    padding: 10px 15px;
+    color: var(--nav-color);
+    font-weight: bolder;
 }
 
 .video-list {
@@ -104,12 +109,33 @@ aside {
     transform: scale(0.9);
     transition: transform .2s ease-in-out;
 }
-.video-item:hover{
+
+.video-item:hover {
     transform: scale(1);
 }
-.video_link{
+
+.video_link {
     text-decoration: none;
     color: inherit;
+}
+
+.info-parent{
+    width: 50%;
+    height: 600px;
+    background-size: cover;
+}
+.info-child-list{
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap;
+}
+.info-child{
+    width: 50%;
+    height: 300px;
+    background-size: cover;
+}
+.info-child img{
+    width: 100%;
 }
 @media (max-width: 768px) {
 
