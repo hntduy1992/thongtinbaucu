@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginHandle'])->name('login.handle');
+    Route::get('/error', [SiteController::class, 'error'])->name('site.error');
     Route::get('/don-vi-bau-cu/{slug}', [SiteController::class, 'viewUnit'])->name('site.viewUnit');
     Route::get('/', [SiteController::class, 'home'])->name('home');
 });

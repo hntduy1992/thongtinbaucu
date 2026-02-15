@@ -23,7 +23,7 @@ const showImageHandler = (location) => {
         </h3>
 
         <p class="mt-2 d-flex flex-md-row flex-column align-center justify-center">
-            <span >Gồm {{ locations.length }} Khu vực bỏ phiếu: </span>
+            <span>Gồm {{ locations.length }} Khu vực bỏ phiếu: </span>
             <a class="ml-2 text-red" v-for="location of locations" :href="`#kvbp_${location.id}`">Khu vực bỏ phiếu
                 {{ location.name }}</a>
         </p>
@@ -36,7 +36,8 @@ const showImageHandler = (location) => {
                             location.name
                         }}
                     </div>
-                    <v-card-text class="location-section" style="background-color: var(--root-color-opacity)">
+                    <v-card-text v-if="location.status" class="location-section"
+                                 style="background-color: var(--root-color-opacity)">
                         <v-img class="location-image" :src="'/storage/'+location.img"
                                :alt="location.name" @click.prevent="showImageHandler(location.img)"/>
                         <div class="flex-fill pa-5 d-flex flex-column">
@@ -70,9 +71,10 @@ const showImageHandler = (location) => {
                                     <v-icon>mdi-map-marker-radius-outline</v-icon>
                                     Xem trên Google Maps</a>
                             </div>
-
                         </div>
-
+                    </v-card-text>
+                    <v-card-text v-else>
+                        <v-alert color="warning">Thông tin đang được cập nhật</v-alert>
                     </v-card-text>
                 </v-card>
 

@@ -31,4 +31,11 @@ class SiteController extends Controller
     {
         return Inertia::render('DiemBoPhieu', []);
     }
+
+    public function error(Request $request)
+    {
+        $type = request('type');
+        $message = request('message');
+        return Inertia::render('Error', ['type' => $type, 'message' => $message]);
+    }
 }
