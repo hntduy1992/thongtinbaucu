@@ -5,34 +5,42 @@ import {router} from "@inertiajs/vue3";
 
 const tab = ref('video');
 
+import img1 from '../../../images/videos/img1.PNG'
+import img2 from '../../../images/videos/img2.PNG'
+import img3 from '../../../images/videos/img3.PNG'
+import img4 from '../../../images/videos/img4.PNG'
+import img5 from '../../../images/videos/img5.PNG'
+import img6 from '../../../images/videos/img6.PNG'
+
+
 const videos = [
     {
-        image: 'images/videos/img1.png',
+        image: img1,
         src: 'https://youtu.be/Cl_HHQdqEeM?si=gNrJA3i7c3PtOGIN',
         title: 'Quyền và trách nhiệm của Đại biểu Hội đồng nhân dân'
     },
     {
-        image: 'images/videos/img2.png',
+        image: img2,
         src: 'https://youtu.be/bbqCDfLbdLU?si=LzhsUy2NjxjEAhph',
         title: 'Tiêu chuẩn của Đại biểu Quốc hội và HĐND'
     },
     {
-        image: 'images/videos/img3.png',
+        image: img3,
         src: 'https://youtu.be/gXi0OjefU4U?si=hwF5U03twQyDMiCV',
         title: 'Ý nghĩa cuộc bầu cử Đại biểu Quốc hội khóa XVI và HĐND các cấp'
     },
     {
-        image: 'images/videos/img4.png',
+        image: img4,
         src: 'https://youtu.be/ozEQhsJbqZM?si=WLe7gg56RNSr7B6P',
         title: 'Nhiệt liệt chào mừng Đại hội Đại biểu toàn quốc lần thứ XIV của Đảng'
     },
     {
-        image: 'images/videos/img5.png',
+        image: img5,
         src: 'https://youtu.be/0_xCD53Siok?si=B6Xw81M923zuzNh7',
         title: 'Hỏi đáp về bầu cử đại biểu Quốc hội khóa XVI và đại biểu HĐND các cấp nhiệm kỳ 2026- 2031 (Kỳ 7)'
     },
     {
-        image: 'images/videos/img6.png',
+        image: img6,
         src: 'https://youtu.be/w0qbffK3hDM?si=gDWPqIH2vv-5w9Fz',
         title: 'Hỏi đáp về bầu cử đại biểu Quốc hội khóa XVI và đại biểu HĐND các cấp nhiệm kỳ 2026- 2031 (Kỳ 6)'
     },
@@ -56,7 +64,7 @@ const videos = [
                         <v-list class="video-list">
                             <v-list-item class="video-item" v-for="video of videos">
                                 <a class="video_link" :href="video.src" target="_blank">
-                                    <v-img :src="video.image"></v-img>
+                                    <v-img :src=" video.image" alt="hinh"></v-img>
                                     <p class="text-center text-overflow-ellipsis">{{ video.title }}</p>
                                 </a>
                             </v-list-item>
@@ -71,7 +79,7 @@ const videos = [
                         </v-carousel>
                     </v-sheet>
                 </v-tabs-window-item>
-                <v-tabs-window-item value="info" >
+                <v-tabs-window-item value="info">
 
                     <v-list class="w-100 d-flex flex-wrap ">
                         <v-list-item class="info-parent" link href="/images/info/media/media-parent.jpg"
@@ -100,7 +108,7 @@ const videos = [
                             </v-list>
                         </v-list-item>
                     </v-list>
-<!--                    <a href="#">Xem thêm</a>-->
+                    <!--                    <a href="#">Xem thêm</a>-->
                 </v-tabs-window-item>
             </v-tabs-window>
         </v-container>
@@ -213,13 +221,16 @@ aside {
     .tab-title button {
         font-size: calc(0.5rem + 0.2vw);
     }
-    .info-parent__title{
+
+    .info-parent__title {
         font-size: 1.2rem;
     }
-    .info-child__title{
+
+    .info-child__title {
         font-size: .9rem;
     }
 }
+
 @media (max-width: 425px) {
 
     .title-text {
@@ -229,13 +240,15 @@ aside {
     .tab-title button {
         font-size: calc(0.5rem + 0.2vw);
     }
-    .info-parent__title
-   {
+
+    .info-parent__title {
         font-size: 1rem;
     }
-    .info-child__title{
+
+    .info-child__title {
         font-size: .7rem;
     }
+
     .info-parent {
         width: 100%;
     }
@@ -245,7 +258,8 @@ aside {
     .info-parent {
         min-height: 300px;
         height: unset;
-        }
+    }
+
     .info-child {
         width: 100%;
     }
